@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rotas Fixas | Vai Bem</title>
+
+<link
+rel="icon"
+type="image/svg+xml"
+href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/routes.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header id="header" class="header">
+
+<div class="container nav">
+
+<div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+<nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="#">Sobre Nós</a></li>
+<li><a class="active" href="#">Rotas Fixas</a></li>
+<li><a href="#">Premium</a></li>
+<li><a href="#">Para Empresas</a></li>
+<li><a href="#">Como Funciona</a></li>
+<li><a href="#">Ajuda</a></li>
+</ul>
+</nav>
+
+<div class="actions">
+<button class="btn-outline">Entrar</button>
+<button class="btn-primary">Baixar App</button>
+</div>
+
+<button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+    <span></span><span></span><span></span>
+</button>
+
+</div>
+
+</header>
+
+
+<section class="routes-page">
+
+<div class="container">
+
+<div class="page-header">
+
+<div>
+
+<h1>Rotas fixas mais populares</h1>
+
+<p>
+Escolha a tua rota e garante o teu lugar.
+</p>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchRoute"
+placeholder="Pesquisar rota...">
+
+</div>
+
+</div>
+
+
+<div class="filter-bar">
+
+<button class="filter active" type="button" data-filter="all">
+Todas
+</button>
+
+<button class="filter" type="button" data-filter="popular">
+Mais Populares
+</button>
+
+<button class="filter" type="button" data-filter="cheap">
+Mais Baratas
+</button>
+
+<button class="filter" type="button" data-filter="fast">
+Mais Rápidas
+</button>
+
+</div>
+
+
+<div class="route-grid" id="routeGrid">
+
+</div>
+
+
+<div class="pagination">
+
+<button type="button" aria-label="Página anterior"><img src="assets/icons/arrow-left-long.svg" alt=""></button>
+
+<button class="active">
+1
+</button>
+
+<button>2</button>
+
+<button>3</button>
+
+<button type="button" aria-label="Próxima página"><img src="assets/icons/arrow-right-long.svg" alt=""></button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="download-cta">
+    <div class="download-cta-copy">
+        <h3>A Vai Bem está na tua mão!</h3>
+        <p>Baixa o app e começa a viajar<br>já de forma inteligente.</p>
+    </div>
+    <div class="download-cta-actions">
+        <img src="assets/google-play.png" alt="Disponível no Google Play">
+        <img src="assets/app-store.png" alt="Disponível na App Store">
+    </div>
+    <div class="download-cta-qr">
+        <img src="assets/qr-code.svg" alt="QR Code para baixar a aplicação">
+        <p>Escaneia o QR Code<br>e baixe agora</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <img src="assets/logo-white.svg" alt="Vai Bem">
+            <span>© 2026 Vai Bem. Todos os direitos reservados.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <a href="#">Sobre nós <span>⌄</span></a>
+            <a href="#">Termos de uso <span>⌄</span></a>
+            <a href="#">Privacidade</a>
+            <a href="#">Ajuda</a>
+        </nav>
+        <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><img src="assets/facebook.svg" alt=""></a>
+            <a href="#" aria-label="Instagram"><img src="assets/instagram.svg" alt=""></a>
+            <a href="#" aria-label="LinkedIn"><img src="assets/linkedin.svg" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+<script src="js/routes.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

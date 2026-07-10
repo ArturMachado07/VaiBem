@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserva Confirmada | Vai Bem</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/confirmacao.css">
+</head>
+<body>
+
+<header id="header" class="header">
+    <div class="container nav">
+        <div class="logo"><a href="index.html"><img id="logo" src="assets/logo.svg" alt="Vai Bem"></a></div>
+        <nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a class="active" href="rotas.html">Rotas Fixas</a></li>
+                <li><a href="#">Premium</a></li>
+                <li><a href="#">Para Empresas</a></li>
+                <li><a href="#">Como Funciona</a></li>
+                <li><a href="#">Ajuda</a></li>
+            </ul>
+        </nav>
+        <div class="actions"><button class="btn-outline">Entrar</button><button class="btn-primary">Baixar App</button></div>
+        <button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<main class="confirmation-background" aria-hidden="true">
+    <div class="container">
+        <div class="confirmation-background-title"><h1>Escolha o seu horário</h1><span>← Ver todas as rotas</span></div>
+        <div class="confirmation-background-content">
+            <div class="background-route"></div>
+            <div class="background-schedules"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="background-summary"></div>
+        </div>
+    </div>
+</main>
+
+<section class="download-cta" aria-hidden="true">
+    <div class="download-cta-copy"><h3>A Vai Bem está na tua mão!</h3><p>Baixa o app e começa a viajar<br>já de forma inteligente.</p></div>
+    <div class="download-cta-actions"><img src="assets/google-play.png" alt=""><img src="assets/app-store.png" alt=""></div>
+    <div class="download-cta-qr"><img src="assets/qr-code.svg" alt=""><p>Escaneia o QR Code<br>e baixe agora</p></div>
+</section>
+
+<footer aria-hidden="true">
+    <div class="container footer-content">
+        <div class="footer-brand"><img src="assets/logo-white.svg" alt=""><span>© 2026 Vai Bem. Todos os direitos reservados.</span></div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé"><a href="#">Sobre nós <span>⌄</span></a><a href="#">Termos de uso <span>⌄</span></a><a href="#">Privacidade</a><a href="#">Ajuda</a></nav>
+        <div class="footer-socials"><a href="#"><img src="assets/facebook.svg" alt=""></a><a href="#"><img src="assets/instagram.svg" alt=""></a><a href="#"><img src="assets/linkedin.svg" alt=""></a></div>
+    </div>
+</footer>
+
+<div class="confirmation-overlay" id="confirmationOverlay">
+    <section class="confirmation-modal" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle">
+        <button class="confirmation-close" id="closeConfirmation" type="button" aria-label="Fechar confirmação"><span class="close big" aria-hidden="true"></span></button>
+
+        <div class="confirmation-success"><span><img src="assets/icons/check.svg" alt="Reserva confirmada"></span></div>
+        <h1 id="confirmationTitle">Reserva confirmada!</h1>
+        <p class="confirmation-subtitle">Vai bem, Faça boa viagem</p>
+
+        <article class="confirmation-trip">
+            <div class="trip-route"><strong id="routeOrigin">Talatona</strong><span>→</span><strong id="routeDestination">Maianga</strong></div>
+            <div class="trip-time"><img src="assets/icons/tempo-2.svg" alt=""><strong id="time">07:30</strong></div>
+            <div class="trip-via"><img class="route-mark" src="assets/icons/estrada.svg" alt=""><span id="routeVia">Via Marginal</span></div>
+            <div class="trip-date"><img src="assets/icons/calendario-2.svg" alt=""><span id="date">20 MAI 2026</span></div>
+        </article>
+
+        <article class="confirmation-seat">
+            <img src="assets/icons/assento-icon.svg" alt="Assento">
+            <div><strong>Assento 12A</strong><span>Janela · Andar de cima</span></div>
+            <img class="seat-bus" src="assets/bus_vaibem-2d.png" alt="Autocarro Vai Bem">
+        </article>
+
+        <article class="confirmation-offer">
+            <img src="assets/cartao multiiviagem_vaibem.png" alt="Cartão Multiviagem">
+            <div><strong>Viaje mais, pague menos</strong><span>Com o cartão Multiviagem<br>poupa até 15% nas próximas viagens.</span></div>
+            <button type="button">Quero aderir</button>
+        </article>
+
+        <div class="confirmation-options">
+            <article><img src="assets/icons/Mcx express.svg" alt=""><div><strong>Referência Multicaixa</strong><span>Pagamento rápido e seguro</span></div></article>
+            <article><img src="assets/icons/cartão icone.svg" alt=""><div><strong>Cartão Multiviagem</strong><span>Saldo disponível: 3.200 Kz</span></div></article>
+        </div>
+
+        <button class="confirmation-done" id="doneConfirmation" type="button">Fechar</button>
+    </section>
+</div>
+
+<script src="js/confirmacao.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

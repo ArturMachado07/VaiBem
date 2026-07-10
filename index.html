@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vai Bem | Transporte Urbano</title>
+
+<link
+rel="icon"
+type="image/svg+xml"
+href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+<header id="header" class="header">
+
+    <div class="container nav">
+
+        <div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+        <nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+            <ul>
+                <li><a class="active" href="#">Início</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="rotas.html">Rotas Fixas</a></li>
+                <li><a href="#">Premium</a></li>
+                <li><a href="#">Para Empresas</a></li>
+                <li><a href="#">Como Funciona</a></li>
+                <li><a href="#">Ajuda</a></li>
+            </ul>
+        </nav>
+
+        <div class="actions">
+            <button class="btn-outline">Entrar</button>
+            <button class="btn-primary">Baixar App</button>
+        </div>
+
+        <button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+            <span></span><span></span><span></span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="slider">
+
+        <!-- Slide 1 -->
+
+        <div class="slide active">
+
+            <div class="hero-content">
+
+                <div class="hero-text">
+
+                    <div class="dots">
+                        <button class="dot active" type="button" aria-label="Mostrar slide 1"></button>
+                        <button class="dot" type="button" aria-label="Mostrar slide 2"></button>
+                    </div>
+
+                    <h1>
+                        Vai bem,<br>
+                        contigo<br>
+                        <span>sempre.</span>
+                    </h1>
+
+                    <p>
+                        Rotas fixas, horários certos para tornar
+                        o teu dia mais simples.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <button class="btn-dark" onclick="window.location.href='rotas.html'">
+                            Ver Rotas Fixas
+                        <img src="assets/icons/arrow-right_white.svg" alt="">
+                        </button>
+
+                        <button class="btn-light">
+                            Baixar App
+                        <img src="assets/icons/download.svg" alt="">
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+                    <img src="assets/hero1.webp" alt="Vai Bem">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Slide 2 -->
+
+        <div class="slide">
+
+            <div class="hero-content">
+
+                <div class="hero-text">
+
+                    <div class="dots">
+                        <button class="dot" type="button" aria-label="Mostrar slide 1"></button>
+                        <button class="dot active" type="button" aria-label="Mostrar slide 2"></button>
+                    </div>
+
+                    <h1>
+                        Pague<br>
+                        menos,<br>
+                        <span>poupe mais.</span>
+                    </h1>
+
+                    <p>
+                        O teu cartão multiviagem para uma
+                        experiência mais cómoda.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <button class="btn-dark">
+                            Adquira Já
+                        <img src="assets/icons/arrow-right_white.svg" alt="">
+                        </button>
+
+                        <button class="btn-light">
+                            Baixar App
+                        <img src="assets/icons/download.svg" alt="">
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+                    <img src="assets/hero2.webp" alt="Cartão Multiviagem">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ROTAS -->
+
+<section class="popular-routes">
+
+    <div class="container">
+
+        <div class="section-header">
+        <div>
+            <h2>Rotas fixas mais populares</h2>
+            <p>Escolhe a tua rota e garante o teu lugar.</p>
+        </div>
+
+        <a href="rotas.html" class="view-all">
+        Ver todas as rotas
+         <img src="assets/icons/arrow-right.svg" alt="">
+        </a>
+    </div>
+
+    <div class="routes-grid">
+
+        <a href="horarios.html" class="route-card active" data-route-id="1">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Talatona <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Maianga</h3>
+                <span>Via Marginal</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 45 min </small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 7 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>800 Kz</strong>
+            </div>
+
+        </a>
+
+        <a href="horarios.html" class="route-card" data-route-id="2">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Viana <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Mutamba</h3>
+                <span>Via Samba</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 60 min</small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 9 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>900 Kz</strong>
+            </div>
+
+        </a>
+
+        <a href="horarios.html" class="route-card" data-route-id="3">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Kilamba <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Luanda</h3>
+                <span>Via Hoji-Ya-Henda</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 50 min</small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 8 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>800 Kz</strong>
+            </div>
+
+        </a>
+
+        <a href="horarios.html" class="route-card" data-route-id="4">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Zango 4 <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Kinaxixi</h3>
+                <span>Via Samba</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 55 min</small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 10 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>900 Kz</strong>
+            </div>
+
+        </a>
+
+        <a href="horarios.html" class="route-card" data-route-id="5">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Camama <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Cidade</h3>
+                <span>Via Kilamba</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 48 min</small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 8 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>850 Kz</strong>
+            </div>
+
+        </a>
+
+        <a href="horarios.html" class="route-card" data-route-id="6">
+
+            <div class="route-icon">
+                <img src="assets/icons/autocarro.svg" alt="Autocarro">
+            </div>
+
+            <div class="route-info">
+                <h3>Benfica <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> Kinaxixi</h3>
+                <span>Via Mutamba</span>
+
+                <div class="route-meta">
+                    <small> <img src="assets/icons/tempo.svg" alt=""> 52 min</small> •
+                    <small> <img src="assets/icons/paragem.svg" alt=""> 9 paragens</small>
+                </div>
+            </div>
+
+            <div class="route-price">
+                <small>A partir de</small>
+                <strong>850 Kz</strong>
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- BENEFITS -->
+
+<section class="benefits">
+
+    <div class="container">
+
+        <h2>
+            Porque escolher a
+            <span>Vai Bem?</span>
+        </h2>
+
+        <p class="benefits-subtitle">
+            Mobilidade com inteligência urbana
+        </p>
+
+        <div class="benefits-grid">
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    <img src="assets/icons/rapido_icone.svg" alt="">
+                </div>
+
+                <h3>Chegas mais rápido ao teu destino</h3>
+
+                <p>
+                    Menos espera, mais viagens confirmadas em minutos
+                </p>
+
+            </div>
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    <img src="assets/icons/preco-justo_icone.svg" alt="">
+                </div>
+
+                <h3>Preço justo antes da viagem</h3>
+
+                <p>
+                    Sem surpresas, sem negociações, sem stress
+                </p>
+
+            </div>
+
+            <div class="benefit-card">
+
+                <div class="benefit-icon">
+                    <img src="assets/icons/mapa-luanda_icone.svg" alt="">
+                </div>
+
+                <h3>Disponível onde estás em Luanda</h3>
+
+                <p>
+                    Cobertura pensada para a realidade da cidade
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<div class="about-image">
+<img src="assets/about.webp">
+</div>
+
+<div class="about-content">
+
+<div class="about-heading">
+<span>Sobre nós</span>
+<a href="#">Saber mais <img src="assets/icons/arrow-right.svg" alt=""></a>
+</div>
+
+<h2>A tua melhor viagem.</h2>
+
+<p>
+A Vai Bem é uma solução angolana de transporte urbano de passageiros, criada para tornar a mobilidade em Luanda mais simples, acessível e eficiente.
+</p>
+
+<p>Com tecnologia e motoristas verificados, ligamos pessoas aos seus destinos com rapidez, conforto e segurança.</p>
+
+<div class="stats">
+
+    <div class="stat">
+
+        <span>+15</span>
+
+        <small>
+            rotas disponíveis<br>em Luanda
+        </small>
+
+    </div>
+
+    <div class="stat">
+
+        <span>2.000+</span>
+
+        <small>
+            passageiros<br>por semana
+        </small>
+
+    </div>
+
+    <div class="stat">
+
+        <span>98%</span>
+
+        <small>
+            de avaliações<br>positivas
+        </small>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="download-cta">
+
+<div class="download-cta-copy">
+<h3>A Vai Bem está na tua mão!</h3>
+<p>Baixa o app e começa a viajar<br>já de forma inteligente.</p>
+</div>
+
+<div class="download-cta-actions">
+<img src="assets/google-play.png" alt="Disponível no Google Play">
+<img src="assets/app-store.png" alt="Disponível na App Store">
+</div>
+
+<div class="download-cta-qr">
+<img src="assets/qr-code.svg" alt="QR Code para baixar a aplicação">
+<p>Escaneia o QR Code<br>e baixe agora</p>
+</div>
+
+</section>
+
+<footer>
+
+<div class="container footer-content">
+
+<div class="footer-brand">
+<img src="assets/logo-white.svg" alt="Vai Bem">
+<span>© 2026 Vai Bem. Todos os direitos reservados.</span>
+</div>
+
+<nav class="footer-nav" aria-label="Navegação do rodapé">
+<a href="#">Sobre nós <span>⌄</span></a>
+<a href="#">Termos de uso <span>⌄</span></a>
+<a href="#">Privacidade</a>
+<a href="#">Ajuda</a>
+</nav>
+
+<div class="footer-socials">
+<a href="#" aria-label="Facebook"><img src="assets/facebook.svg" alt=""></a>
+<a href="#" aria-label="Instagram"><img src="assets/instagram.svg" alt=""></a>
+<a href="#" aria-label="LinkedIn"><img src="assets/linkedin.svg" alt=""></a>
+</div>
+
+</div>
+
+</footer>
+
+<script src="js/app.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

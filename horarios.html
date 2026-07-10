@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Horários Disponíveis | Vai Bem</title>
+
+<link
+rel="icon"
+type="image/svg+xml"
+href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/horarios.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="booking-layout">
+
+<header id="header" class="header">
+
+<div class="container nav">
+
+<div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+<nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="#">Sobre Nós</a></li>
+<li><a class="active" href="rotas.html">Rotas Fixas</a></li>
+<li><a href="#">Premium</a></li>
+<li><a href="#">Para Empresas</a></li>
+<li><a href="#">Como Funciona</a></li>
+<li><a href="#">Ajuda</a></li>
+</ul>
+</nav>
+
+<div class="actions">
+<button class="btn-outline">Entrar</button>
+<button class="btn-primary">Baixar App</button>
+</div>
+
+<button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+    <span></span><span></span><span></span>
+</button>
+
+</div>
+
+</header>
+
+<main class="booking-page">
+
+<div class="container">
+
+<div class="booking-topbar">
+    <h1>Escolha o seu horário</h1>
+    <a href="rotas.html" class="view-all"><img src="assets/icons/arrow-left.svg" alt=""> Ver todas as rotas</a>
+</div>
+
+<div class="booking-grid">
+
+<div class="booking-content">
+
+<div class="route-banner">
+
+    <div class="route-stop">
+        <strong><span id="routeStart">Talatona</span><img class="route-name-arrow route-start-arrow" src="assets/icons/arrow-right-long.svg" alt="para"></strong>
+        <small>Ponto de embarque</small>
+    </div>
+
+    <div class="route-details">
+        <strong id="routeName">Maianga via Marginal</strong>
+        <div class="route-meta">
+            <span><img src="assets/icons/tempo.svg" alt=""> <span id="routeDuration">45 min</span></span>
+            <b>•</b>
+            <span><img src="assets/icons/paragem.svg" alt=""> <span id="routeStops">7 paragens</span></span>
+        </div>
+    </div>
+
+    <div class="bus-icon"><img src="assets/icons/autocarro.svg" alt="Autocarro"></div>
+
+    <div class="route-stop route-stop-end">
+        <strong><img class="route-end-arrow-desktop" src="assets/icons/arrow-right-long.svg" alt="para"><span id="routeEnd">Maianga</span><img class="route-name-arrow route-end-arrow" src="assets/icons/arrow-left-long.svg" alt="para"></strong>
+        <small>Ponto de desembarque</small>
+    </div>
+
+</div>
+
+<div class="calendar">
+
+<button id="previousDays" class="calendar-nav" type="button" aria-label="Dias anteriores">‹</button>
+
+<div id="calendarDays" class="calendar-days"></div>
+
+<button id="nextDays" class="calendar-nav" type="button" aria-label="Próximos dias">›</button>
+
+</div>
+
+<div id="scheduleGrid"
+class="schedule-grid">
+
+</div>
+
+</div>
+
+
+<aside class="reservation-card">
+
+<button id="closeReservation" class="reservation-close" type="button" aria-label="Fechar resumo da reserva"><span class="close big" aria-hidden="true"></span></button>
+
+<h3>
+Sua Reserva
+</h3>
+
+<div class="reservation-item reservation-route">
+    <div><span>Rota</span><strong id="summaryRoute">Talatona → Maianga</strong><small id="summaryVia">Via Marginal</small></div>
+    <div class="reservation-time"><span>Horário</span><strong id="summaryTime">--</strong><small id="summaryDate">20 MAI 2026</small></div>
+</div>
+
+<div class="reservation-item reservation-seat">
+    <div><span>Seu lugar</span><strong>Assento 12A</strong></div>
+    <div><span>Posição</span><small>Janela · Andar de cima</small></div>
+</div>
+
+<div class="reservation-total">
+    <span>Preço por lugar</span>
+    <strong class="price" id="summaryPrice">--</strong>
+</div>
+
+<button
+id="confirmBtn"
+class="btn-confirm">
+
+Confirmar reserva <span class="confirm-arrow"><img src="assets/icons/arrow-right_white.svg" alt=""></span>
+
+</button>
+
+</aside>
+
+<div id="reservationOverlay" class="reservation-overlay" aria-hidden="true"></div>
+
+</div>
+
+</div>
+
+</main>
+
+<section class="download-cta">
+    <div class="download-cta-copy">
+        <h3>A Vai Bem está na tua mão!</h3>
+        <p>Baixa o app e começa a viajar<br>já de forma inteligente.</p>
+    </div>
+    <div class="download-cta-actions">
+        <img src="assets/google-play.png" alt="Disponível no Google Play">
+        <img src="assets/app-store.png" alt="Disponível na App Store">
+    </div>
+    <div class="download-cta-qr">
+        <img src="assets/qr-code.svg" alt="QR Code para baixar a aplicação">
+        <p>Escaneia o QR Code<br>e baixe agora</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <img src="assets/logo-white.svg" alt="Vai Bem">
+            <span>© 2026 Vai Bem. Todos os direitos reservados.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <a href="#">Sobre nós <span>⌄</span></a>
+            <a href="#">Termos de uso <span>⌄</span></a>
+            <a href="#">Privacidade</a>
+            <a href="#">Ajuda</a>
+        </nav>
+        <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><img src="assets/facebook.svg" alt=""></a>
+            <a href="#" aria-label="Instagram"><img src="assets/instagram.svg" alt=""></a>
+            <a href="#" aria-label="LinkedIn"><img src="assets/linkedin.svg" alt=""></a>
+        </div>
+    </div>
+</footer>
+
+<script src="js/horarios.js"></script>
+<script src="main.js"></script>
+
+</body>
+
+</html>
