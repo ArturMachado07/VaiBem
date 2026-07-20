@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Entrar | Vai Bem</title>
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+<header id="header" class="header">
+
+<div class="container nav">
+
+<div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+<nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="about.html">Sobre Nós</a></li>
+<li><a href="rotas.html">Rotas Fixas</a></li>
+<li><a href="premium.html">Premium</a></li>
+<li><a href="empresas.html">Para Empresas</a></li>
+<li><a href="como-funciona.html">Como Funciona</a></li>
+<li><a href="#">Ajuda</a></li>
+</ul>
+</nav>
+
+<div class="actions">
+<button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+<button class="btn-primary" onclick="window.location.href='#'">Baixar App</button>
+</div>
+
+<button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+    <span></span><span></span><span></span>
+</button>
+
+</div>
+
+</header>
+
+<main class="login-page">
+
+<div class="login-container">
+
+<div class="login-card">
+
+<div class="login-header">
+    <img src="assets/logo.svg" alt="Vai Bem">
+    <h1>Entrar na sua conta</h1>
+    <p>Bem-vindo de volta! Insere os teus dados para continuar.</p>
+</div>
+
+<form class="login-form" id="loginForm">
+
+<div class="login-field">
+    <label for="loginEmail">Email</label>
+    <input type="email" id="loginEmail" name="email" placeholder="seu@email.com" required>
+</div>
+
+<div class="login-field">
+    <label for="loginPassword">Palavra-passe</label>
+    <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+    <button type="button" class="login-toggle-password" id="togglePassword" aria-label="Mostrar palavra-passe">
+        <img src="assets/icons/arrow-right.svg" alt="">
+    </button>
+</div>
+
+<div class="login-options">
+    <label class="login-checkbox">
+        <input type="checkbox" name="remember">
+        <span>Lembrar-me</span>
+    </label>
+    <a href="#" class="login-forgot">Esqueceu-se da palavra-passe?</a>
+</div>
+
+<button type="submit" class="login-submit">Entrar <img src="assets/icons/arrow-right_white.svg" alt=""></button>
+
+</form>
+
+<div class="login-divider">
+    <span>ou</span>
+</div>
+
+<div class="login-social">
+    <button type="button" class="login-social-btn">
+        <img src="assets/google-play.png" alt="Google">
+        Continuar com Google
+    </button>
+</div>
+
+<div class="login-signup">
+    Ainda não tens conta? <a href="#">Criar conta</a>
+</div>
+
+</div>
+
+<div class="login-illustration">
+
+<div class="login-illustration-content">
+    <img src="assets/bus_vaibem-2d.png" alt="Vai Bem">
+    <h2>Vai bem, contigo sempre.</h2>
+    <p>Rotas fixas, horários certos para tornar o teu dia mais simples.</p>
+
+    <div class="login-illustration-features">
+        <div class="login-ill-feature">
+            <img src="assets/icons/check.svg" alt="">
+            <span>Reserva rápida</span>
+        </div>
+        <div class="login-ill-feature">
+            <img src="assets/icons/check.svg" alt="">
+            <span>Preço justo</span>
+        </div>
+        <div class="login-ill-feature">
+            <img src="assets/icons/check.svg" alt="">
+            <span>Motoristas verificados</span>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="main.js"></script>
+
+<script>
+document.getElementById("togglePassword")?.addEventListener("click", function() {
+    const input = document.getElementById("loginPassword");
+    const type = input.getAttribute("type") === "password" ? "text" : "password";
+    input.setAttribute("type", type);
+    this.setAttribute("aria-label", type === "password" ? "Mostrar palavra-passe" : "Ocultar palavra-passe");
+});
+</script>
+
+</body>
+</html>

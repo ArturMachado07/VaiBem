@@ -44,3 +44,13 @@ document.querySelectorAll(".route-card[data-route-id]").forEach(card => {
         localStorage.setItem("selectedRoute", card.dataset.routeId);
     });
 });
+
+/* FAQ INTERATIVO */
+document.querySelectorAll(".faq-question, .como-faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item, .como-faq-item");
+        if (!item) return;
+        const isActive = item.classList.contains("active");
+        item.classList.toggle("active", !isActive);
+    });
+});

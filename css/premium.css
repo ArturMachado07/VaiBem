@@ -1,0 +1,487 @@
+/* PREMIUM HERO */
+
+.premium-hero{
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--purple) 0%, #1a0038 100%);
+    color: #fff;
+}
+
+.premium-hero-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.premium-hero-tag{
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(115, 247, 168, .15);
+    color: var(--green);
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.premium-hero-text h1{
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 28px;
+}
+
+.premium-hero-text h1 span{
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    z-index: 1;
+    color: var(--green);
+}
+
+.premium-hero-text h1 span::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(115, 247, 168, .15);
+    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+    z-index: -1;
+}
+
+.premium-hero-text p{
+    color: rgba(255, 255, 255, .7);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 500px;
+    font-weight: 300;
+    margin-bottom: 32px;
+}
+
+.btn-premium{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: var(--purple);
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.btn-premium:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(115, 247, 168, .3);
+}
+
+.premium-hero-image{
+    display: flex;
+    justify-content: center;
+}
+
+.premium-hero-image img{
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* PLANOS */
+
+.premium-plans{
+    padding: 100px 0;
+    background: #f8f8f8;
+}
+
+.plans-header{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.plans-header h2{
+    font-size: 36px;
+    color: var(--purple);
+    margin-bottom: 12px;
+}
+
+.plans-header h2 span{
+    color: var(--green);
+}
+
+.plans-header p{
+    color: #888;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.plans-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.plan-card{
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+    transition: .3s;
+    position: relative;
+}
+
+.plan-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .06);
+}
+
+.plan-card-highlight{
+    border: 2px solid var(--purple);
+    box-shadow: 0 8px 32px rgba(50, 5, 110, .08);
+    transform: scale(1.03);
+}
+
+.plan-card-highlight:hover{
+    transform: scale(1.03) translateY(-6px);
+}
+
+.plan-badge{
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: var(--purple);
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.plan-card h3{
+    font-size: 22px;
+    color: var(--purple);
+    margin-bottom: 16px;
+}
+
+.plan-price{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.plan-price strong{
+    font-size: 38px;
+    color: var(--purple);
+    font-weight: 700;
+}
+
+.plan-price span{
+    color: #999;
+    font-size: 14px;
+}
+
+.plan-features{
+    list-style: none;
+    text-align: left;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.plan-features li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.plan-features li img{
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.btn-plan{
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-plan:hover{
+    background: #1a0038;
+}
+
+.plan-card-highlight .btn-plan{
+    background: var(--green);
+    color: var(--purple);
+}
+
+.plan-card-highlight .btn-plan:hover{
+    background: #5de095;
+}
+
+/* BENEFÍCIOS PREMIUM */
+
+.premium-benefits{
+    padding: 100px 0;
+    background: var(--purple);
+    color: #fff;
+}
+
+.premium-benefits h2{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+}
+
+.premium-benefits h2 span{
+    color: var(--green);
+}
+
+.premium-benefits-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.pbenefit-card{
+    background: rgba(255, 255, 255, .08);
+    border-radius: 18px;
+    padding: 40px 24px 30px;
+    text-align: center;
+}
+
+.pbenefit-icon{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    border: 2px solid rgba(255, 255, 255, .15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.pbenefit-icon img{
+    width: 26px;
+    height: 26px;
+    filter: brightness(0) invert(1);
+}
+
+.pbenefit-card h3{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pbenefit-card p{
+    color: rgba(255, 255, 255, .75);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* FAQ */
+
+.premium-faq{
+    padding: 100px 0;
+    background: #fff;
+}
+
+.premium-faq h2{
+    text-align: center;
+    font-size: 36px;
+    color: var(--purple);
+    margin-bottom: 60px;
+}
+
+.premium-faq h2 span{
+    color: var(--green);
+}
+
+.faq-list{
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item{
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.faq-question{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--purple);
+    cursor: pointer;
+    text-align: left;
+}
+
+.faq-arrow{
+    font-size: 18px;
+    transition: transform .3s;
+    color: #999;
+}
+
+.faq-item.active .faq-arrow{
+    transform: rotate(180deg);
+}
+
+.faq-answer{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+}
+
+.faq-item.active .faq-answer{
+    max-height: 200px;
+}
+
+.faq-answer p{
+    padding: 0 24px 18px;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* RESPONSIVO TABLET */
+
+@media(max-width: 991px){
+
+    .premium-hero-content{
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .premium-hero-text p{
+        margin: 0 auto 32px;
+    }
+
+    .premium-hero-text h1{
+        font-size: 48px;
+    }
+
+    .plans-grid{
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .plan-card-highlight{
+        transform: none;
+    }
+
+    .plan-card-highlight:hover{
+        transform: translateY(-6px);
+    }
+
+    .premium-benefits-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+}
+
+/* RESPONSIVO PHONE */
+
+@media(max-width: 768px){
+
+    .premium-hero{
+        padding: 40px 0;
+    }
+
+    .premium-hero-text h1{
+        font-size: 36px;
+    }
+
+    .premium-hero-text p{
+        font-size: 15px;
+    }
+
+    .premium-hero-image img{
+        max-height: 260px;
+    }
+
+    .premium-plans{
+        padding: 60px 0;
+    }
+
+    .plans-header h2{
+        font-size: 28px;
+    }
+
+    .plans-header{
+        margin-bottom: 36px;
+    }
+
+    .plan-card{
+        padding: 32px 20px;
+    }
+
+    .plan-price strong{
+        font-size: 32px;
+    }
+
+    .premium-benefits{
+        padding: 60px 0;
+    }
+
+    .premium-benefits h2{
+        font-size: 28px;
+        margin-bottom: 36px;
+    }
+
+    .premium-benefits-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .pbenefit-card{
+        padding: 32px 20px 24px;
+    }
+
+    .premium-faq{
+        padding: 60px 0;
+    }
+
+    .premium-faq h2{
+        font-size: 28px;
+        margin-bottom: 36px;
+    }
+
+    .faq-question{
+        font-size: 15px;
+        padding: 16px 18px;
+    }
+
+}

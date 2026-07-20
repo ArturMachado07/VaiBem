@@ -1,0 +1,398 @@
+/* HERO COMO FUNCIONA */
+
+.como-hero{
+    padding: 80px 0;
+    background: #fff;
+}
+
+.como-hero-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.como-hero-tag{
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(115, 247, 168, .15);
+    color: var(--purple);
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.como-hero-text h1{
+    font-size: 64px;
+    line-height: 1;
+    color: var(--purple);
+    margin-bottom: 28px;
+}
+
+.como-hero-text h1 span{
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.como-hero-text h1 span::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--green);
+    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+    z-index: -1;
+}
+
+.como-hero-text p{
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 500px;
+    font-weight: 300;
+}
+
+.como-hero-image{
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.como-hero-image img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* PASSOS */
+
+.como-steps{
+    padding: 100px 0;
+    background: var(--purple);
+    color: #fff;
+}
+
+.como-steps-header{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.como-steps-header h2{
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.como-steps-header h2 span{
+    color: var(--green);
+}
+
+.como-steps-header p{
+    color: rgba(255, 255, 255, .7);
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.como-steps-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.como-step-card{
+    text-align: center;
+    padding: 40px 20px 30px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 18px;
+    position: relative;
+}
+
+.como-step-number{
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .06);
+    line-height: 1;
+}
+
+.como-step-icon{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    border: 2px solid rgba(255, 255, 255, .15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.como-step-icon img{
+    width: 26px;
+    height: 26px;
+    filter: brightness(0) invert(1);
+}
+
+.como-step-card h3{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.como-step-card p{
+    color: rgba(255, 255, 255, .75);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* COMO USAR A APP */
+
+.como-app{
+    padding: 100px 0;
+    background: #f8f8f8;
+}
+
+.como-app-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.como-app-text h2{
+    font-size: 36px;
+    color: var(--purple);
+    margin-bottom: 40px;
+}
+
+.como-app-text h2 span{
+    color: var(--green);
+}
+
+.como-app-steps{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.como-app-step{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.como-app-step-icon{
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.como-app-step-icon img{
+    width: 18px;
+    height: 18px;
+}
+
+.como-app-step h4{
+    font-size: 16px;
+    color: var(--purple);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.como-app-step p{
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.como-app-image{
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.como-app-image img{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+/* FAQ */
+
+.como-faq{
+    padding: 100px 0;
+    background: #fff;
+}
+
+.como-faq h2{
+    text-align: center;
+    font-size: 36px;
+    color: var(--purple);
+    margin-bottom: 60px;
+}
+
+.como-faq h2 span{
+    color: var(--green);
+}
+
+.como-faq-list{
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.como-faq-item{
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.como-faq-question{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--purple);
+    cursor: pointer;
+    text-align: left;
+}
+
+.como-faq-arrow{
+    font-size: 18px;
+    transition: transform .3s;
+    color: #999;
+}
+
+.como-faq-item.active .como-faq-arrow{
+    transform: rotate(180deg);
+}
+
+.como-faq-answer{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+}
+
+.como-faq-item.active .como-faq-answer{
+    max-height: 200px;
+}
+
+.como-faq-answer p{
+    padding: 0 24px 18px;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+/* RESPONSIVO TABLET */
+
+@media(max-width: 991px){
+
+    .como-hero-content{
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .como-hero-text h1{
+        font-size: 48px;
+    }
+
+    .como-steps-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .como-app-content{
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .como-app-image{
+        order: -1;
+    }
+
+}
+
+/* RESPONSIVO PHONE */
+
+@media(max-width: 768px){
+
+    .como-hero{
+        padding: 40px 0;
+    }
+
+    .como-hero-text h1{
+        font-size: 36px;
+    }
+
+    .como-hero-text p{
+        font-size: 15px;
+    }
+
+    .como-steps{
+        padding: 60px 0;
+    }
+
+    .como-steps-header h2{
+        font-size: 28px;
+    }
+
+    .como-steps-header{
+        margin-bottom: 36px;
+    }
+
+    .como-steps-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .como-step-card{
+        padding: 32px 18px 24px;
+    }
+
+    .como-step-number{
+        font-size: 34px;
+    }
+
+    .como-app{
+        padding: 60px 0;
+    }
+
+    .como-app-text h2{
+        font-size: 28px;
+        margin-bottom: 28px;
+    }
+
+    .como-faq{
+        padding: 60px 0;
+    }
+
+    .como-faq h2{
+        font-size: 28px;
+        margin-bottom: 36px;
+    }
+
+    .como-faq-question{
+        font-size: 15px;
+        padding: 16px 18px;
+    }
+
+}
