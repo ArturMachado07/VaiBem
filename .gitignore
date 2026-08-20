@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.idea/
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependências (caso venham a ser introduzidas ferramentas de build no futuro)
+node_modules/
+
+# Ficheiros temporários
+*.tmp
+*.bak
+*~

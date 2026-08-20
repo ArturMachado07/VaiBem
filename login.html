@@ -7,6 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Entrar | Vai Bem</title>
+<meta name="description" content="Inicia sessão na tua conta Vai Bem para gerires as tuas reservas de transporte urbano em Luanda.">
+<link rel="canonical" href="https://vai-bem-ten.vercel.app/login.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vai Bem">
+<meta property="og:title" content="Entrar | Vai Bem">
+<meta property="og:description" content="Inicia sessão na tua conta Vai Bem para gerires as tuas reservas de transporte urbano em Luanda.">
+<meta property="og:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
+<meta property="og:url" content="https://vai-bem-ten.vercel.app/login.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Entrar | Vai Bem">
+<meta name="twitter:description" content="Inicia sessão na tua conta Vai Bem para gerires as tuas reservas de transporte urbano em Luanda.">
+<meta name="twitter:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
 
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -16,6 +30,9 @@
 </head>
 
 <body>
+
+
+<a class="skip-link" href="#main-content">Saltar para o conteúdo</a>
 
 <header id="header" class="header">
 
@@ -35,13 +52,13 @@
 <li><a href="premium.html">Premium</a></li>
 <li><a href="empresas.html">Para Empresas</a></li>
 <li><a href="como-funciona.html">Como Funciona</a></li>
-<li><a href="#">Ajuda</a></li>
+<li><a href="ajuda.html">Ajuda</a></li>
 </ul>
 </nav>
 
 <div class="actions">
 <button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
-<button class="btn-primary" onclick="window.location.href='#'">Baixar App</button>
+<button type="button" class="btn-primary" data-coming-soon="Baixar a app Vai Bem::A app está quase a chegar à Google Play e à App Store. Fica atento às nossas redes sociais para seres o primeiro a saber.">Baixar App</button>
 </div>
 
 <button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
@@ -52,7 +69,7 @@
 
 </header>
 
-<main class="login-page">
+<main class="login-page" id="main-content">
 
 <div class="login-container">
 
@@ -64,19 +81,23 @@
     <p>Bem-vindo de volta! Insere os teus dados para continuar.</p>
 </div>
 
-<form class="login-form" id="loginForm">
+<div class="form-status" id="loginStatus" role="status"></div>
 
-<div class="login-field">
+<form class="login-form" id="loginForm" novalidate>
+
+<div class="login-field" id="loginEmailField">
     <label for="loginEmail">Email</label>
-    <input type="email" id="loginEmail" name="email" placeholder="seu@email.com" required>
+    <input type="email" id="loginEmail" name="email" placeholder="seu@email.com" autocomplete="email" required>
+    <span class="field-error"></span>
 </div>
 
-<div class="login-field">
+<div class="login-field" id="loginPasswordField">
     <label for="loginPassword">Palavra-passe</label>
-    <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+    <input type="password" id="loginPassword" name="password" placeholder="••••••••" autocomplete="current-password" required minlength="6">
     <button type="button" class="login-toggle-password" id="togglePassword" aria-label="Mostrar palavra-passe">
         <img src="assets/icons/arrow-right.svg" alt="">
     </button>
+    <span class="field-error"></span>
 </div>
 
 <div class="login-options">
@@ -84,10 +105,10 @@
         <input type="checkbox" name="remember">
         <span>Lembrar-me</span>
     </label>
-    <a href="#" class="login-forgot">Esqueceu-se da palavra-passe?</a>
+    <button type="button" class="login-forgot" data-coming-soon="Recuperar palavra-passe::A recuperação de palavra-passe por email vai ficar disponível assim que o login estiver ligado ao servidor.">Esqueceu-se da palavra-passe?</button>
 </div>
 
-<button type="submit" class="login-submit">Entrar <img src="assets/icons/arrow-right_white.svg" alt=""></button>
+<button type="submit" class="login-submit" id="loginSubmit">Entrar <img src="assets/icons/arrow-right_white.svg" alt=""></button>
 
 </form>
 
@@ -96,14 +117,14 @@
 </div>
 
 <div class="login-social">
-    <button type="button" class="login-social-btn">
-        <img src="assets/google-play.png" alt="Google">
+    <button type="button" class="login-social-btn" data-coming-soon="Login com Google::A autenticação com a tua conta Google vai ficar disponível quando integrarmos o login social.">
+        <img src="assets/google-play.png" alt="">
         Continuar com Google
     </button>
 </div>
 
 <div class="login-signup">
-    Ainda não tens conta? <a href="#">Criar conta</a>
+    Ainda não tens conta? <button type="button" class="link-inline" data-coming-soon="Criar conta::O registo de novas contas vai abrir em breve, junto com o lançamento da app.">Criar conta</button>
 </div>
 
 </div>
@@ -111,7 +132,7 @@
 <div class="login-illustration">
 
 <div class="login-illustration-content">
-    <img src="assets/bus_vaibem-2d.png" alt="Vai Bem">
+    <img src="assets/bus_vaibem-2d.png" alt="Vai Bem" width="138" height="51">
     <h2>Vai bem, contigo sempre.</h2>
     <p>Rotas fixas, horários certos para tornar o teu dia mais simples.</p>
 
@@ -137,16 +158,11 @@
 
 </main>
 
+<script src="js/storage.js"></script>
+<script src="js/api.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/login.js"></script>
 <script src="main.js"></script>
-
-<script>
-document.getElementById("togglePassword")?.addEventListener("click", function() {
-    const input = document.getElementById("loginPassword");
-    const type = input.getAttribute("type") === "password" ? "text" : "password";
-    input.setAttribute("type", type);
-    this.setAttribute("aria-label", type === "password" ? "Mostrar palavra-passe" : "Ocultar palavra-passe");
-});
-</script>
 
 </body>
 </html>

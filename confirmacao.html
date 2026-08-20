@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reserva Confirmada | Vai Bem</title>
+<meta name="description" content="Resumo da tua reserva Vai Bem: rota, horário, lugar e opções de pagamento.">
+<link rel="canonical" href="https://vai-bem-ten.vercel.app/confirmacao.html">
+
+<meta name="robots" content="noindex, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vai Bem">
+<meta property="og:title" content="Reserva Confirmada | Vai Bem">
+<meta property="og:description" content="Resumo da tua reserva Vai Bem: rota, horário, lugar e opções de pagamento.">
+<meta property="og:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
+<meta property="og:url" content="https://vai-bem-ten.vercel.app/confirmacao.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reserva Confirmada | Vai Bem">
+<meta name="twitter:description" content="Resumo da tua reserva Vai Bem: rota, horário, lugar e opções de pagamento.">
+<meta name="twitter:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/confirmacao.css">
@@ -21,10 +37,10 @@
                 <li><a href="premium.html">Premium</a></li>
                 <li><a href="empresas.html">Para Empresas</a></li>
                 <li><a href="como-funciona.html">Como Funciona</a></li>
-                <li><a href="#">Ajuda</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
             </ul>
         </nav>
-        <div class="actions"><button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button><button class="btn-primary">Baixar App</button></div>
+        <div class="actions"><button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button><button type="button" class="btn-primary" data-coming-soon="Baixar a app Vai Bem::A app está quase a chegar à Google Play e à App Store. Fica atento às nossas redes sociais para seres o primeiro a saber.">Baixar App</button></div>
         <button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -49,8 +65,19 @@
 <footer aria-hidden="true">
     <div class="container footer-content">
         <div class="footer-brand"><img src="assets/logo-white.svg" alt=""><span>© 2026 Vai Bem. Todos os direitos reservados.</span></div>
-        <nav class="footer-nav" aria-label="Navegação do rodapé"><a href="about.html">Sobre nós <span>⌄</span></a><a href="#">Termos de uso <span>⌄</span></a><a href="#">Privacidade</a><a href="#">Ajuda</a></nav>
-        <div class="footer-socials"><a href="#"><img src="assets/facebook.svg" alt=""></a><a href="#"><img src="assets/instagram.svg" alt=""></a><a href="#"><img src="assets/linkedin.svg" alt=""></a></div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <a href="about.html">Sobre nós</a>
+            <a href="como-funciona.html">Como Funciona</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="empresas.html">Para Empresas</a>
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Privacidade</a>
+        </nav>
+        <div class="footer-socials">
+            <button type="button" class="social-icon" aria-label="Facebook" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/facebook.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="Instagram" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/instagram.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="LinkedIn" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/linkedin.svg" alt=""></button>
+        </div>
     </div>
 </footer>
 
@@ -72,13 +99,13 @@
         <article class="confirmation-seat">
             <img src="assets/icons/assento-icon.svg" alt="Assento">
             <div><strong>Assento 12A</strong><span>Janela · Andar de cima</span></div>
-            <img class="seat-bus" src="assets/bus_vaibem-2d.png" alt="Autocarro Vai Bem">
+            <img class="seat-bus" src="assets/bus_vaibem-2d.png" alt="Autocarro Vai Bem" width="138" height="51">
         </article>
 
         <article class="confirmation-offer">
-            <img src="assets/cartao multiiviagem_vaibem.png" alt="Cartão Multiviagem">
+            <img src="assets/cartao multiiviagem_vaibem.png" alt="Cartão Multiviagem" width="147" height="98">
             <div><strong>Viaje mais, pague menos</strong><span>Com o cartão Multiviagem<br>poupa até 15% nas próximas viagens.</span></div>
-            <button type="button">Quero aderir</button>
+            <button type="button" data-coming-soon="Cartão Multiviagem::A adesão ao cartão multiviagem vai ficar disponível diretamente aqui em breve.">Quero aderir</button>
         </article>
 
         <div class="confirmation-options">
@@ -90,6 +117,8 @@
     </section>
 </div>
 
+<script src="js/data/routes.js"></script>
+<script src="js/storage.js"></script>
 <script src="js/confirmacao.js"></script>
 <script src="main.js"></script>
 </body>

@@ -133,10 +133,15 @@
 }
 
 .login-forgot{
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
     color: var(--purple);
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .login-forgot:hover{
@@ -234,13 +239,20 @@
     font-weight: 300;
 }
 
-.login-signup a{
+.login-signup a,
+.login-signup button.link-inline{
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
     color: var(--purple);
     text-decoration: none;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.login-signup a:hover{
+.login-signup a:hover,
+.login-signup button.link-inline:hover{
     text-decoration: underline;
 }
 

@@ -1,36 +1,42 @@
-const route = localStorage.getItem("route") || "Talatona → Maianga";
-const date = localStorage.getItem("date") || "20 MAI 2026";
-const time = localStorage.getItem("time") || "07:30";
-const confirmationModal = document.querySelector(".confirmation-modal");
-const [origin = "Talatona", destination = "Maianga"] = route.split(" → ");
-const routeVias = {
-    "Talatona → Maianga": "Via Marginal",
-    "Viana → Mutamba": "Via Samba",
-    "Kilamba → Luanda": "Via Hoji-Ya-Henda",
-    "Zango 4 → Kinaxixi": "Via Samba",
-    "Camama → Cidade": "Via Kilamba",
-    "Benfica → Kinaxixi": "Via Mutamba"
-};
+/**
+ * Página de confirmação — lê a reserva estruturada guardada por
+ * horarios.js através de VaiBemStorage, em vez das antigas chaves soltas
+ * "route" / "date" / "time".
+ */
+(function () {
+    "use strict";
 
-document.getElementById("routeOrigin").textContent = origin;
-document.getElementById("routeDestination").textContent = destination;
-document.getElementById("routeVia").textContent = routeVias[route] || "Via Marginal";
-document.getElementById("date").textContent = date;
-document.getElementById("time").textContent = time;
+    const booking = window.VaiBemStorage.getBooking();
+    const route = booking.route || window.VaiBemData.getRouteById(1);
+    const date = booking.date || "";
+    const time = booking.schedule ? booking.schedule.time : "";
 
-document.documentElement.classList.add("confirmation-open");
-document.body.classList.add("confirmation-open");
+    const confirmationModal = document.querySelector(".confirmation-modal");
 
-function preventBackgroundScroll(event) {
-    if (!confirmationModal.contains(event.target)) event.preventDefault();
-}
+    document.getElementById("routeOrigin").textContent = route.origin;
+    document.getElementById("routeDestination").textContent = route.destination;
+    document.getElementById("routeVia").textContent = route.via;
+    document.getElementById("date").textContent = date;
+    document.getElementById("time").textContent = time;
 
-document.addEventListener("touchmove", preventBackgroundScroll, { passive: false });
-document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
+    document.documentElement.classList.add("confirmation-open");
+    document.body.classList.add("confirmation-open");
 
-function closeConfirmation() {
-    window.location.href = "index.html";
-}
+    function preventBackgroundScroll(event) {
+        if (!confirmationModal.contains(event.target)) event.preventDefault();
+    }
 
-document.getElementById("closeConfirmation").addEventListener("click", closeConfirmation);
-document.getElementById("doneConfirmation").addEventListener("click", closeConfirmation);
+    document.addEventListener("touchmove", preventBackgroundScroll, { passive: false });
+    document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
+
+    function closeConfirmation() {
+        // A reserva deste protótipo termina aqui — limpa o estado para que
+        // a próxima visita comece uma reserva nova em vez de reaproveitar
+        // dados antigos.
+        window.VaiBemStorage.clearBooking();
+        window.location.href = "index.html";
+    }
+
+    document.getElementById("closeConfirmation").addEventListener("click", closeConfirmation);
+    document.getElementById("doneConfirmation").addEventListener("click", closeConfirmation);
+})();

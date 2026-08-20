@@ -73,6 +73,71 @@ nav a{
     --text:#31384A;
     --bg:#F8F8F8;
     --content-gutter:max(5vw, calc((100vw - 1400px) / 2));
+
+    /* Design tokens (Fase 1 — extensão sem alterar cores/valores já usados) */
+    --purple-dark:#1a0038;
+    --purple-alt:#3b0875;
+    --accent-purple:#551A8B;
+    --success:#58c996;
+    --success-bg:#effcf6;
+    --border:#e6e6e6;
+    --muted:#888;
+
+    --radius-sm:10px;
+    --radius-md:12px;
+    --radius-lg:16px;
+    --radius-xl:20px;
+    --radius-pill:50px;
+
+    --shadow-sm:0 4px 20px rgba(0,0,0,.06);
+    --shadow-md:0 12px 40px rgba(0,0,0,.08);
+
+    --space-xs:8px;
+    --space-sm:16px;
+    --space-md:24px;
+    --space-lg:40px;
+    --space-xl:80px;
+
+    --container-max:1400px;
+    --transition:.3s ease;
+
+    --bp-tablet:991px;
+    --bp-phone:768px;
+}
+
+/* Estado de foco visível consistente em toda a navegação por teclado (Fase 10 — acessibilidade) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible{
+    outline:2px solid var(--purple);
+    outline-offset:2px;
+    border-radius:4px;
+}
+
+header.sticky a:focus-visible,
+header.sticky button:focus-visible{
+    outline-color:var(--green);
+}
+
+.skip-link{
+    position:absolute;
+    top:-48px;
+    left:16px;
+    z-index:2000;
+    background:var(--purple);
+    color:#fff;
+    padding:12px 18px;
+    border-radius:0 0 var(--radius-sm) var(--radius-sm);
+    text-decoration:none;
+    font-weight:600;
+    transition:top .2s ease;
+}
+
+.skip-link:focus{
+    top:0;
 }
 
 /* Impede que browsers móveis apliquem a cor azul padrão aos controlos. */
@@ -1109,4 +1174,226 @@ body{
 
 *{
     box-sizing:border-box;
+}
+
+/* ===================================================================
+   COMPONENTES PARTILHADOS (Fase 12 — Design System)
+   Modal "Em breve", validação de formulários e estados de loading,
+   usados em todas as páginas via js/ui.js e js/forms.js.
+=================================================================== */
+
+/* Modal "Em breve" — usado por Baixar App, lojas, QR code e redes sociais */
+.cs-modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    display:none;
+    place-items:center;
+    padding:20px;
+    background:rgba(30,15,50,.5);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+}
+
+.cs-modal-overlay.is-open{
+    display:grid;
+}
+
+.cs-modal{
+    position:relative;
+    width:min(420px, 100%);
+    padding:40px 32px 32px;
+    background:#fff;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-md);
+    text-align:center;
+}
+
+.cs-modal-icon{
+    width:64px;
+    height:64px;
+    margin:0 auto 20px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(115,247,168,.18);
+    color:var(--purple);
+    font-size:26px;
+    font-weight:700;
+}
+
+.cs-modal h2{
+    font-size:20px;
+    color:var(--purple);
+    margin-bottom:10px;
+}
+
+.cs-modal p{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+    font-weight:300;
+    margin-bottom:24px;
+}
+
+.cs-modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:50%;
+    background:#f2f2f4;
+    color:#555;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.cs-modal-actions{
+    display:flex;
+    justify-content:center;
+}
+
+.cs-modal-actions button{
+    padding:13px 28px;
+    border:0;
+    border-radius:var(--radius-sm);
+    background:var(--purple);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.cs-modal-actions button:hover{
+    background:var(--purple-dark);
+}
+
+/* Estados de formulário partilhados (login, empresas e futuros) */
+.form-group.is-invalid input,
+.form-group.is-invalid select,
+.login-field.is-invalid input{
+    border-color:#e0455a !important;
+    background:#fff7f7 !important;
+}
+
+.form-group.is-valid input,
+.login-field.is-valid input{
+    border-color:var(--success) !important;
+}
+
+.field-error{
+    display:none;
+    margin-top:2px;
+    color:#c1273a;
+    font-size:12px;
+    font-weight:500;
+}
+
+.form-group.is-invalid .field-error,
+.login-field.is-invalid .field-error{
+    display:block;
+}
+
+.form-status{
+    display:none;
+    align-items:flex-start;
+    gap:10px;
+    padding:14px 16px;
+    border-radius:var(--radius-sm);
+    font-size:14px;
+    line-height:1.45;
+    font-weight:400;
+}
+
+.form-status.is-visible{
+    display:flex;
+}
+
+.form-status.is-success{
+    background:var(--success-bg);
+    color:#1f6b47;
+    border:1px solid #b9ecd2;
+}
+
+.form-status.is-error{
+    background:#fdeceb;
+    color:#a3212f;
+    border:1px solid #f3c3c3;
+}
+
+/* Botão com estado de carregamento */
+button.is-loading{
+    position:relative;
+    color:transparent !important;
+    pointer-events:none;
+}
+
+button.is-loading::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:18px;
+    height:18px;
+    margin:-9px 0 0 -9px;
+    border:2px solid rgba(255,255,255,.4);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:cs-spin .7s linear infinite;
+}
+
+.login-social-btn.is-loading::after,
+.btn-outline.is-loading::after{
+    border:2px solid rgba(50,5,110,.25);
+    border-top-color:var(--purple);
+}
+
+@keyframes cs-spin{
+    to{ transform:rotate(360deg); }
+}
+
+/* Link/botão desativados de forma visível e acessível (redes sociais, etc.) */
+.link-disabled{
+    cursor:pointer;
+}
+
+/* Resets para <button> a substituir os antigos href="#" (ícones sociais,
+   lojas de apps, QR code) — mantêm exatamente o mesmo aspeto visual. */
+.footer-socials button.social-icon,
+.cta-store-btn,
+.cta-qr-btn{
+    background:none;
+    border:0;
+    padding:0;
+    margin:0;
+    display:block;
+    cursor:pointer;
+}
+
+.footer-socials button.social-icon img,
+.cta-store-btn img,
+.cta-qr-btn img{
+    display:block;
+}
+
+button.btn-premium{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+/* Scroll suave para âncoras internas (ex.: CTA "Solicitar" -> formulário) */
+html{
+    scroll-behavior:smooth;
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{
+        scroll-behavior:auto;
+    }
 }

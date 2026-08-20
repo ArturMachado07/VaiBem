@@ -113,7 +113,10 @@ text-align:center;
 
 }
 
-.route-card{
+.route-card,
+.route-card:visited,
+.route-card:hover,
+.route-card:active{
     background:#fff;
     border:1px solid #E6E6E6;
     border-radius:16px;
@@ -124,6 +127,8 @@ text-align:center;
     justify-content:space-between;
     gap:16px;
     cursor:pointer;
+    text-decoration:none;
+    color:inherit;
     transition:.3s;
 
 }
