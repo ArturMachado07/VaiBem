@@ -299,9 +299,32 @@ width:100%;
 
 .route-grid{
 
-grid-template-columns:1fr;
+grid-template-columns:repeat(2, minmax(0, 1fr));
+gap:12px;
 
 }
+
+.route-grid .route-card{
+
+flex-direction:column;
+align-items:flex-start;
+min-height:0;
+padding:12px;
+gap:0;
+border-radius:14px;
+
+}
+
+.route-grid .route-icon{ width:34px; height:34px; border-radius:9px; margin-bottom:8px; }
+.route-grid .route-info{ margin-left:0; min-width:0; width:100%; }
+.route-grid .route-info h3{ font-size:12.5px; gap:3px; flex-wrap:wrap; line-height:1.2; }
+.route-grid .route-info > span{ font-size:10.5px; margin-bottom:6px; }
+.route-grid .route-arrow{ width:11px; height:11px; }
+.route-grid .route-meta{ flex-wrap:wrap; gap:4px 8px; font-size:9.5px; margin-bottom:8px; }
+.route-grid .route-meta img{ width:11px; height:11px; }
+.route-grid .route-price{ text-align:left; width:100%; }
+.route-grid .route-price small{ font-size:9.5px; }
+.route-grid .route-price strong{ font-size:14px; white-space:nowrap; }
 
 .filter-bar{
 

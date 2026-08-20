@@ -1126,23 +1126,29 @@ body{
     .view-all img{ width:14px; height:14px; }
 
     .routes-grid{
-        grid-template-columns:1fr;
-        gap:14px;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:12px;
     }
 
     .routes-grid .route-card{
-        min-height:112px;
-        padding:14px;
-        gap:10px;
+        flex-direction:column;
+        align-items:flex-start;
+        min-height:0;
+        padding:12px;
+        gap:0;
         border-radius:14px;
     }
 
-    .routes-grid .route-icon{ width:42px; height:42px; border-radius:10px; }
-    .routes-grid .route-info{ margin-left:0; min-width:0; }
-    .routes-grid .route-info h3{ font-size:15px; gap:4px; }
-    .routes-grid .route-meta{ gap:8px; font-size:12px; }
-    .routes-grid .route-price small{ font-size:11px; }
-    .routes-grid .route-price strong{ font-size:15px; white-space:nowrap; }
+    .routes-grid .route-icon{ width:34px; height:34px; border-radius:9px; margin-bottom:8px; }
+    .routes-grid .route-info{ margin-left:0; min-width:0; width:100%; }
+    .routes-grid .route-info h3{ font-size:12.5px; gap:3px; flex-wrap:wrap; line-height:1.2; }
+    .routes-grid .route-info span{ font-size:10.5px; margin-bottom:6px; }
+    .routes-grid .route-arrow{ width:11px; height:11px; }
+    .routes-grid .route-meta{ flex-wrap:wrap; gap:4px 8px; font-size:9.5px; margin-bottom:8px; }
+    .routes-grid .route-meta img{ width:11px; height:11px; }
+    .routes-grid .route-price{ text-align:left; width:100%; }
+    .routes-grid .route-price small{ font-size:9.5px; }
+    .routes-grid .route-price strong{ font-size:14px; white-space:nowrap; }
 
     .benefits{ padding:72px 0 52px; }
     .benefits h2{ font-size:28px; line-height:1.05; }
@@ -1151,7 +1157,7 @@ body{
     .benefit-card{ padding:62px 22px 26px; }
     .benefit-card h3{ font-size:17px; }
 
-    .about-image{ height:auto; aspect-ratio:749 / 716; }
+    .about-image{ height:auto; aspect-ratio:4 / 3; }
     .about-content{ padding:40px 16px; }
     .about h2{ font-size:44px; }
     .stats{ gap:22px; }
