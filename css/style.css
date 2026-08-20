@@ -1165,8 +1165,9 @@ body{
 
     .download-cta{ padding:52px 16px; gap:28px; }
     .download-cta h3{ font-size:22px; }
-    .download-cta-actions{ width:100%; }
-    .download-cta-actions img{ width:calc(50% - 6px); max-width:150px; }
+    .download-cta-actions{ width:100%; display:flex; gap:10px; }
+    .download-cta-actions .cta-store-btn{ flex:1 1 0; }
+    .download-cta-actions img{ width:100%; max-width:180px; height:auto; }
     .download-cta-qr{ gap:18px; }
 
     footer{ padding:38px 0 30px; }
