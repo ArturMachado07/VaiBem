@@ -732,12 +732,14 @@ header.sticky #menu03 span{ background:var(--green); }
 .about{
     display:grid;
     grid-template-columns:39% 61%;
-    align-items:stretch;
+    align-items:center;
     background:#fbf9fa;
 }
 
 .about-image{
     overflow:hidden;
+    aspect-ratio:749 / 716;
+    border-radius:20px;
 }
 
 .about img{
