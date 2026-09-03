@@ -1193,6 +1193,27 @@ body{
 @media(max-width:1024px){
     .actions{ display:none; }
 
+    /* Entrar: main.js move só o botão/chip de login (não o "Baixar App")
+       para dentro do menu, antes da lista de links, para ficar visível no
+       dropdown mobile/tablet (onde o cabeçalho o esconde acima). */
+    .primary-nav > .btn-outline,
+    .primary-nav > .user-chip{
+        margin:14px 16px 18px;
+        padding-bottom:18px;
+        border-bottom:1px solid #eee;
+    }
+
+    .primary-nav > .btn-outline{
+        display:flex;
+        justify-content:center;
+        width:calc(100% - 32px);
+    }
+
+    header.sticky .primary-nav > .btn-outline{
+        color:#444;
+        border-color:#ddd;
+    }
+
     #menu03{ display:block; }
 
     .primary-nav{
@@ -1209,7 +1230,7 @@ body{
     }
 
     .primary-nav.open{
-        max-height:520px;
+        max-height:620px;
         border-color:#eee;
     }
 
@@ -1257,7 +1278,7 @@ body{
     }
 
     .primary-nav.open{
-        max-height:520px;
+        max-height:620px;
         border-color:#eee;
     }
 
