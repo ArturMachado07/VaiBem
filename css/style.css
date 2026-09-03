@@ -852,13 +852,13 @@ header.sticky .user-chip-btn{
 .about{
     display:grid;
     grid-template-columns:39% 61%;
-    align-items:center;
+    align-items:stretch;
     background:#fbf9fa;
 }
 
 .about-image{
     overflow:hidden;
-    aspect-ratio:749 / 716;
+    height:100%;
 }
 
 .about img{
@@ -1026,21 +1026,6 @@ footer{
 
 @media(max-width:991px){
 
-    .hero-content{
-        flex-direction:column;
-        text-align:center;
-        padding-top:40px;
-    }
-
-    .hero-text,
-    .hero-image{
-        width:100%;
-    }
-
-    .hero h1{
-        font-size:52px;
-    }
-
     .routes-grid{
     grid-template-columns:1fr 1fr;
     }
@@ -1068,6 +1053,17 @@ footer{
         font-size:42px;
     }
 
+    .hero-content{
+        flex-direction:column;
+        text-align:center;
+        padding-top:40px;
+    }
+
+    .hero-text,
+    .hero-image{
+        width:100%;
+    }
+
     nav{
         display:none;
     }
@@ -1078,7 +1074,9 @@ footer{
     }
 }
 
-@media(max-width:1200px){
+/* Tablet (769–1200px): mantém a hero lado a lado como no desktop, só reduz o tamanho do título para caber sem quebrar.
+   Limitado a min-width:769px para não ser sobreposto pelo bloco de mobile (max-width:768px) acima, que vem antes no ficheiro. */
+@media(min-width:769px) and (max-width:1200px){
 
 .route-grid{
 grid-template-columns:repeat(2,1fr);
@@ -1088,13 +1086,8 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:1fr;
 }
 
-.hero-content{
-flex-direction:column;
-}
-
-.hero-text,
-.hero-image{
-width:100%;
+.hero h1{
+font-size:clamp(34px, 4vw, 52px);
 }
 }
 
