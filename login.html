@@ -57,7 +57,7 @@
 </nav>
 
 <div class="actions">
-<button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+<button id="navLoginBtn" class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
 <button type="button" class="btn-primary" data-coming-soon="Baixar a app Vai Bem::A app está quase a chegar à Google Play e à App Store. Fica atento às nossas redes sociais para seres o primeiro a saber.">Baixar App</button>
 </div>
 
@@ -117,10 +117,7 @@
 </div>
 
 <div class="login-social">
-    <button type="button" class="login-social-btn" data-coming-soon="Login com Google::A autenticação com a tua conta Google vai ficar disponível quando integrarmos o login social.">
-        <img src="assets/google-play.png" alt="">
-        Continuar com Google
-    </button>
+    <div id="googleSignInBtn" class="google-signin-btn"></div>
 </div>
 
 <div class="login-signup">
@@ -162,6 +159,8 @@
 <script src="js/api.js"></script>
 <script src="js/forms.js"></script>
 <script src="js/login.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/google-auth.js"></script>
 <script src="main.js"></script>
 
 </body>

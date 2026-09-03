@@ -128,3 +128,73 @@ document.querySelectorAll(".faq-question, .como-faq-question").forEach(btn => {
         if (event.key === "Escape" && overlay.classList.contains("is-open")) closeModal();
     });
 })();
+
+/* ===================================================================
+   SESSÃO DO UTILIZADOR (Login com Google)
+   Em todas as páginas: se existir uma sessão Google guardada em
+   localStorage (criada em login.html via js/google-auth.js), troca o
+   botão "Entrar" do cabeçalho por um chip com o nome/foto da pessoa e
+   uma opção de sair. Não há conta em servidor — é só a sessão local
+   do próprio dispositivo.
+=================================================================== */
+(function initAuthUI() {
+
+    const USER_KEY = "vaibem:user";
+    const loginBtn = document.getElementById("navLoginBtn");
+    if (!loginBtn) return;
+
+    function getUser() {
+        try {
+            const raw = localStorage.getItem(USER_KEY);
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function signOut() {
+        try { localStorage.removeItem(USER_KEY); } catch (e) {}
+        if (window.google && window.google.accounts && window.google.accounts.id) {
+            google.accounts.id.disableAutoSelect();
+        }
+        window.location.href = "index.html";
+    }
+
+    const user = getUser();
+    if (!user) return;
+
+    const firstName = (user.name || user.email || "Conta").trim().split(" ")[0];
+    const initial = firstName.charAt(0).toUpperCase();
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "user-chip";
+    wrapper.innerHTML = `
+        <button type="button" class="user-chip-btn" aria-haspopup="true" aria-expanded="false">
+            ${user.picture
+                ? `<img src="${user.picture}" alt="" class="user-chip-avatar" referrerpolicy="no-referrer">`
+                : `<span class="user-chip-avatar user-chip-avatar-fallback">${initial}</span>`}
+            <span class="user-chip-name">${firstName}</span>
+        </button>
+        <div class="user-chip-menu" role="menu">
+            <span class="user-chip-email">${user.email || ""}</span>
+            <button type="button" class="user-chip-logout" role="menuitem">Sair</button>
+        </div>
+    `;
+
+    loginBtn.replaceWith(wrapper);
+
+    const toggleBtn = wrapper.querySelector(".user-chip-btn");
+    toggleBtn.addEventListener("click", () => {
+        const isOpen = wrapper.classList.toggle("is-open");
+        toggleBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", event => {
+        if (!wrapper.contains(event.target)) {
+            wrapper.classList.remove("is-open");
+            toggleBtn.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    wrapper.querySelector(".user-chip-logout").addEventListener("click", signOut);
+})();

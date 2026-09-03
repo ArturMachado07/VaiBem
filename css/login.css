@@ -205,6 +205,15 @@
     gap: 12px;
 }
 
+.google-signin-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.google-signin-btn iframe{
+    margin: 0 auto;
+}
+
 .login-social-btn{
     display: flex;
     align-items: center;
