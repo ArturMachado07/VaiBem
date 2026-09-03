@@ -749,7 +749,7 @@ header.sticky .user-chip-btn{
 /* BENEFITS */
 
 .benefits{
-    padding:100px 0;
+    padding:100px 0 60px;
     background:var(--purple);
     color:#fff;
 }
@@ -920,6 +920,29 @@ header.sticky .user-chip-btn{
     color:var(--purple);
     font-size:72px;
     line-height:.96;
+}
+
+.about h2 span{
+    position:relative;
+    display:inline-block;
+    padding:0 20px;
+    z-index:1;
+}
+
+.about h2 span::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--green);
+
+    clip-path:polygon(
+        4% 0,
+        100% 0,
+        96% 100%,
+        0% 100%
+    );
+
+    z-index:-1;
 }
 
 .stat{
