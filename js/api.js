@@ -76,6 +76,23 @@
             );
             const mailtoUrl = `mailto:empresas@vaibem.co.ao?subject=${subject}&body=${body}`;
             return delay({ mailtoUrl }, 150);
+        },
+
+        // TODO: substituir por fetch("/api/multiviagem/adesoes", { method: "POST", body: JSON.stringify(payload) })
+        // Mesma lógica provisória do registerCompany(): sem backend/emissão
+        // automática de cartões ainda, por isso o pedido segue por mailto em
+        // vez de fingir que o cartão já foi emitido.
+        requestMultiCard(payload) {
+            const subject = encodeURIComponent(`Pedido de adesão — Cartão Multiviagem (${payload.nome || "cliente"})`);
+            const body = encodeURIComponent(
+                `Nome: ${payload.nome}\n` +
+                `Email: ${payload.email}\n` +
+                `Telefone: ${payload.telefone}\n` +
+                `Rota mais usada: ${payload.rota || "não indicado"}\n` +
+                `Saldo inicial pretendido: ${payload.saldo || "sem preferência"}\n`
+            );
+            const mailtoUrl = `mailto:cartao@vaibem.co.ao?subject=${subject}&body=${body}`;
+            return delay({ mailtoUrl }, 150);
         }
     };
 

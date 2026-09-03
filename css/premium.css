@@ -374,6 +374,12 @@
     font-weight: 300;
 }
 
+.faq-answer p a{
+    color: var(--purple);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 /* RESPONSIVO TABLET */
 
 @media(max-width: 991px){
