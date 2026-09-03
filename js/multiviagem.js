@@ -57,11 +57,18 @@
             }
         });
 
-        // Vira automaticamente pouco depois de carregar a página, para
-        // mostrar as duas faces do cartão; o clique continua disponível
-        // para virar de novo manualmente a qualquer momento.
+        // Vira sozinho em loop (frente/verso/frente/...) pouco depois de
+        // carregar a página; o clique/Enter continuam disponíveis para virar
+        // manualmente a qualquer momento, sem parar o loop. Respeita
+        // "reduzir animação" do sistema, não iniciando o loop automático.
         window.addEventListener("load", () => {
-            setTimeout(() => setFlipped(true), 900);
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (prefersReducedMotion) return;
+
+            setTimeout(() => {
+                setFlipped(true);
+                setInterval(toggle, 3000);
+            }, 900);
         });
     })();
 

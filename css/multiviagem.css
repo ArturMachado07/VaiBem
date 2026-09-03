@@ -81,10 +81,7 @@
 }
 
 /* ===================================================================
-   CARTÃO 3D ANIMADO (vira ao carregar a página, e ao clicar/Enter)
-   .mc-card tem transform-style:preserve-3d — o filter (sombra) fica no
-   .mc-card-viewport (elemento pai), nunca no próprio .mc-card, senão o
-   3D quebra e a face de trás aparece espelhada.
+   CARTÃO 3D ANIMADO (vira sozinho em loop, e ao clicar/Enter)
 =================================================================== */
 
 .mc-card-viewport{
@@ -95,12 +92,6 @@
     width: var(--card-w);
     aspect-ratio: 2001 / 1248;
     perspective: 1800px;
-    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .4)) drop-shadow(0 4px 10px rgba(0, 0, 0, .25));
-    transition: filter var(--flip-duration) var(--flip-ease);
-}
-
-.mc-card-viewport.is-animating{
-    filter: drop-shadow(0 34px 55px rgba(0, 0, 0, .5)) drop-shadow(0 10px 18px rgba(0, 0, 0, .3));
 }
 
 .mc-card{
