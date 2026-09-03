@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Minha Conta | Vai Bem</title>
+<meta name="description" content="A tua área de cliente Vai Bem: próxima viagem, histórico, Cartão Multiviagem e descontos.">
+<link rel="canonical" href="https://vai-bem-ten.vercel.app/perfil.html">
+
+<meta name="robots" content="noindex, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vai Bem">
+<meta property="og:title" content="A Minha Conta | Vai Bem">
+<meta property="og:description" content="A tua área de cliente Vai Bem: próxima viagem, histórico, Cartão Multiviagem e descontos.">
+<meta property="og:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
+<meta property="og:url" content="https://vai-bem-ten.vercel.app/perfil.html">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/perfil.css">
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#main-content">Saltar para o conteúdo</a>
+
+<header id="header" class="header">
+
+<div class="container nav">
+
+<div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+<nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="about.html">Sobre Nós</a></li>
+<li><a href="rotas.html">Rotas Fixas</a></li>
+<li><a href="empresas.html">Para Empresas</a></li>
+<li><a href="cartao-multiviagem.html">Cartão Multiviagem</a></li>
+<li><a href="ajuda.html">Ajuda</a></li>
+</ul>
+</nav>
+
+<div class="actions">
+<button id="navLoginBtn" class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+<button type="button" class="btn-primary" data-coming-soon="Baixar a app Vai Bem::A app está quase a chegar à Google Play e à App Store. Fica atento às nossas redes sociais para seres o primeiro a saber.">Baixar App</button>
+</div>
+
+<button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+    <span></span><span></span><span></span>
+</button>
+
+</div>
+
+</header>
+
+<main id="main-content">
+
+<section class="profile-section">
+<div class="container profile-container">
+
+    <div class="profile-hero">
+        <div class="profile-avatar" id="profileAvatar">?</div>
+        <div class="profile-hero-text">
+            <h1 id="profileName">A minha conta</h1>
+            <p id="profileSince">A carregar os teus dados…</p>
+        </div>
+        <button type="button" class="btn-outline profile-edit" data-coming-soon="Editar perfil::A edição de dados pessoais vai estar disponível assim que existir uma conta em servidor. Por agora a tua sessão vem apenas do teu login Google.">Editar perfil</button>
+    </div>
+
+    <div class="profile-grid">
+
+        <article class="profile-card profile-card-card" id="cardMultiviagem">
+            <h2>Cartão Multiviagem</h2>
+            <div class="profile-card-empty" id="cardMultiviagemEmpty">
+                <p>Ainda não tens o Cartão Multiviagem associado à tua conta. Adere para carregares saldo e embarcares só com um QR code.</p>
+                <a href="cartao-multiviagem.html#adesao" class="btn-mc-small">Aderir ao cartão</a>
+            </div>
+        </article>
+
+        <article class="profile-card" id="nextTrip">
+            <h2>Próxima viagem</h2>
+            <div class="profile-card-empty" id="nextTripEmpty">
+                <p>Ainda não tens nenhuma viagem marcada.</p>
+                <a href="rotas.html" class="btn-mc-small">Reservar agora</a>
+            </div>
+            <div class="trip-preview" id="nextTripContent" hidden>
+                <div class="trip-preview-route">
+                    <strong id="tripOrigin"></strong>
+                    <span aria-hidden="true">→</span>
+                    <strong id="tripDestination"></strong>
+                </div>
+                <p id="tripDateTime" class="trip-preview-meta"></p>
+                <p id="tripSeat" class="trip-preview-meta"></p>
+            </div>
+        </article>
+
+    </div>
+
+    <article class="profile-card profile-card-wide">
+        <div class="profile-card-header">
+            <h2>Histórico de viagens</h2>
+        </div>
+        <div class="profile-history-empty" id="historyEmpty">
+            <p>As tuas viagens confirmadas vão aparecer aqui.</p>
+        </div>
+        <ul class="profile-history-list" id="historyList" hidden></ul>
+    </article>
+
+    <article class="profile-card profile-card-wide">
+        <h2>Descontos e promoções</h2>
+        <div class="profile-promos">
+            <div class="profile-promo">
+                <span class="profile-promo-tag">15%</span>
+                <p>Poupa até 15% em cada viagem pagando com o Cartão Multiviagem.</p>
+            </div>
+            <div class="profile-promo">
+                <span class="profile-promo-tag">Kz</span>
+                <p>Pacotes de saldo a partir de 2.000 Kz, sem mensalidade no cartão.</p>
+            </div>
+        </div>
+    </article>
+
+    <article class="profile-card profile-card-wide profile-actions-card">
+        <h2>Ações rápidas</h2>
+        <div class="profile-actions">
+            <a href="rotas.html" class="profile-action">Nova reserva</a>
+            <a href="cartao-multiviagem.html#adesao" class="profile-action">Pedir cartão</a>
+            <button type="button" class="profile-action" data-coming-soon="Editar dados::A edição de dados pessoais vai estar disponível assim que existir uma conta em servidor.">Editar dados</button>
+            <button type="button" class="profile-action profile-action-danger" id="profileLogout">Terminar sessão</button>
+        </div>
+    </article>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <img src="assets/logo-white.svg" alt="Vai Bem">
+            <span>© 2026 Vai Bem. Todos os direitos reservados.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <a href="about.html">Sobre nós</a>
+            <a href="cartao-multiviagem.html">Cartão Multiviagem</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="empresas.html">Para Empresas</a>
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Privacidade</a>
+        </nav>
+        <div class="footer-socials">
+            <button type="button" class="social-icon" aria-label="Facebook" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/facebook.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="Instagram" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/instagram.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="LinkedIn" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/linkedin.svg" alt=""></button>
+        </div>
+    </div>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/perfil.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

@@ -179,6 +179,7 @@ document.querySelectorAll(".faq-question").forEach(btn => {
         </button>
         <div class="user-chip-menu" role="menu">
             <span class="user-chip-email">${user.email || ""}</span>
+            <a href="perfil.html" class="user-chip-account" role="menuitem">A minha conta</a>
             <button type="button" class="user-chip-logout" role="menuitem">Sair</button>
         </div>
     `;

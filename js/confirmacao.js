@@ -30,6 +30,17 @@
     document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
 
     function closeConfirmation() {
+        // Regista a viagem no histórico do perfil antes de limpar a reserva
+        // em curso, para a área "A minha conta" poder mostrar viagens
+        // passadas mesmo sem existir ainda uma conta em servidor.
+        window.VaiBemStorage.addToHistory({
+            route: route,
+            date: date,
+            time: time,
+            seat: booking.booking && booking.booking.seat ? booking.booking.seat : "12A",
+            price: booking.schedule ? booking.schedule.price : (route ? route.price : null)
+        });
+
         // A reserva deste protótipo termina aqui — limpa o estado para que
         // a próxima visita comece uma reserva nova em vez de reaproveitar
         // dados antigos.

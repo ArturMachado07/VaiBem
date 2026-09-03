@@ -432,6 +432,25 @@ header.sticky #menu03 span{ background:var(--green); }
     word-break:break-all;
 }
 
+.user-chip-account{
+    display:block;
+    background:transparent;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:8px 12px;
+    text-align:left;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+    text-decoration:none;
+}
+
+.user-chip-account:hover{
+    border-color:var(--purple);
+    color:var(--purple);
+}
+
 .user-chip-logout{
     background:transparent;
     border:1px solid #ddd;

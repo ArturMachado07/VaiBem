@@ -108,10 +108,48 @@
         LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
     }
 
+    /**
+     * Histórico de viagens confirmadas (Fase — área do cliente / perfil.html).
+     * Guardado à parte da reserva atual: cada viagem confirmada em
+     * confirmacao.js é acrescentada aqui antes de a reserva em curso ser
+     * limpa, para a página de perfil poder mostrar viagens passadas mesmo
+     * sem existir ainda uma conta em servidor.
+     */
+    const HISTORY_KEY = "vaibem:history";
+    const HISTORY_LIMIT = 20;
+
+    function getHistory() {
+        try {
+            const raw = localStorage.getItem(HISTORY_KEY);
+            const list = raw ? JSON.parse(raw) : [];
+            return Array.isArray(list) ? list : [];
+        } catch (error) {
+            console.warn("VaiBemStorage: não foi possível ler o histórico de viagens.", error);
+            return [];
+        }
+    }
+
+    function addToHistory(entry) {
+        try {
+            const list = getHistory();
+            list.unshift(Object.assign({ createdAt: new Date().toISOString() }, entry));
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, HISTORY_LIMIT)));
+        } catch (error) {
+            console.warn("VaiBemStorage: não foi possível guardar a viagem no histórico.", error);
+        }
+    }
+
+    function clearHistory() {
+        localStorage.removeItem(HISTORY_KEY);
+    }
+
     global.VaiBemStorage = {
         getBooking,
         saveBooking,
         updateBooking,
-        clearBooking
+        clearBooking,
+        getHistory,
+        addToHistory,
+        clearHistory
     };
 })(window);
