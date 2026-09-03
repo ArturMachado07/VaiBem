@@ -11,6 +11,60 @@
 (function () {
     "use strict";
 
+    /* ---------- Cartão 3D animado (hero) ---------- */
+
+    (function initCard3D() {
+        const card = document.getElementById("mcCard");
+        const viewport = document.getElementById("mcCardViewport");
+        if (!card || !viewport) return;
+
+        let isFlipped = false;
+        let isAnimating = false;
+
+        function setFlipped(flipped) {
+            if (isAnimating || flipped === isFlipped) return;
+            isFlipped = flipped;
+            isAnimating = true;
+
+            card.classList.toggle("is-flipped", isFlipped);
+            viewport.classList.add("is-animating");
+            card.setAttribute("aria-pressed", String(isFlipped));
+            card.setAttribute(
+                "aria-label",
+                isFlipped
+                    ? "Cartão Multiviagem virado. Mostra o verso. Clique para voltar à frente."
+                    : "Cartão Multiviagem. Clique para virar e ver o verso."
+            );
+        }
+
+        function toggle() {
+            setFlipped(!isFlipped);
+        }
+
+        card.addEventListener("click", toggle);
+
+        card.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+                event.preventDefault();
+                toggle();
+            }
+        });
+
+        card.addEventListener("transitionend", event => {
+            if (event.propertyName === "transform") {
+                isAnimating = false;
+                viewport.classList.remove("is-animating");
+            }
+        });
+
+        // Vira automaticamente pouco depois de carregar a página, para
+        // mostrar as duas faces do cartão; o clique continua disponível
+        // para virar de novo manualmente a qualquer momento.
+        window.addEventListener("load", () => {
+            setTimeout(() => setFlipped(true), 900);
+        });
+    })();
+
     /* ---------- Popular rotas no select ---------- */
 
     const rotaSelect = document.getElementById("mcRota");
