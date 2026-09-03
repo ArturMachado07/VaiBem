@@ -41,50 +41,6 @@ if(menuToggle && primaryNav){
     });
 }
 
-/* ===================================================================
-   ENTRAR NO MENU MOBILE E TABLET
-   Em ecrãs ≤1024px o cabeçalho esconde as .actions (Entrar / Baixar App)
-   e o menu vira um dropdown. Sem isto, o botão "Entrar" desaparecia por
-   completo nesses formatos. Movemos só esse botão (ou o user-chip, quando
-   a pessoa já tem sessão Google) para dentro do dropdown, antes da lista
-   de links, e devolvemo-lo ao cabeçalho quando o ecrã volta a alargar.
-   "Baixar App" fica de fora de propósito, continua só no cabeçalho.
-=================================================================== */
-(function initMobileNavLogin() {
-
-    const nav = document.getElementById("primary-nav-menu");
-    const actions = document.querySelector(".actions");
-    if (!nav || !actions) return;
-
-    const mq = window.matchMedia("(max-width:1024px)");
-
-    function getLoginElement() {
-        // #navLoginBtn existe antes do login; initAuthUI() troca-o por
-        // .user-chip depois de a pessoa entrar com o Google — procuramos
-        // os dois porque o elemento pode ter sido substituído entretanto.
-        return document.getElementById("navLoginBtn") || document.querySelector(".user-chip");
-    }
-
-    function place(isNarrow) {
-        const el = getLoginElement();
-        if (!el) return;
-        if (isNarrow) {
-            if (el.parentNode !== nav) nav.insertBefore(el, nav.firstElementChild);
-        } else if (el.parentNode !== actions) {
-            actions.insertBefore(el, actions.firstElementChild);
-        }
-    }
-
-    place(mq.matches);
-
-    if (mq.addEventListener) {
-        mq.addEventListener("change", event => place(event.matches));
-    } else if (mq.addListener) {
-        // Compatibilidade com browsers mais antigos.
-        mq.addListener(event => place(event.matches));
-    }
-})();
-
 document.querySelectorAll(".route-card[data-route-id]").forEach(card => {
     card.addEventListener("click", () => {
         const id = card.dataset.routeId;

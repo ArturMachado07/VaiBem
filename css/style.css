@@ -1191,28 +1191,9 @@ body{
 
 /* Tablet / iPad — usa o mesmo menu hamburguer do mobile em vez do menu horizontal */
 @media(max-width:1024px){
-    .actions{ display:none; }
-
-    /* Entrar: main.js move só o botão/chip de login (não o "Baixar App")
-       para dentro do menu, antes da lista de links, para ficar visível no
-       dropdown mobile/tablet (onde o cabeçalho o esconde acima). */
-    .primary-nav > .btn-outline,
-    .primary-nav > .user-chip{
-        margin:14px 16px 18px;
-        padding-bottom:18px;
-        border-bottom:1px solid #eee;
-    }
-
-    .primary-nav > .btn-outline{
-        display:flex;
-        justify-content:center;
-        width:calc(100% - 32px);
-    }
-
-    header.sticky .primary-nav > .btn-outline{
-        color:#444;
-        border-color:#ddd;
-    }
+    /* "Baixar App" some, mas o "Entrar" (ou o user-chip, já com sessão)
+       continua no cabeçalho, ao lado do botão do menu. */
+    .actions .btn-primary{ display:none; }
 
     #menu03{ display:block; }
 
@@ -1260,7 +1241,9 @@ body{
 
     .nav{ height:72px; }
     .logo img{ width:100px; display:block; }
-    .actions{ display:none; }
+    .actions .btn-primary{ display:none; }
+    .actions{ gap:10px; }
+    .actions .btn-outline{ padding:11px 16px; font-size:14px; }
 
     #menu03{ display:block; }
 
