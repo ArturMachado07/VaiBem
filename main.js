@@ -55,9 +55,9 @@ document.querySelectorAll(".route-card[data-route-id]").forEach(card => {
 });
 
 /* FAQ INTERATIVO */
-document.querySelectorAll(".faq-question, .como-faq-question").forEach(btn => {
+document.querySelectorAll(".faq-question").forEach(btn => {
     btn.addEventListener("click", () => {
-        const item = btn.closest(".faq-item, .como-faq-item");
+        const item = btn.closest(".faq-item");
         if (!item) return;
         const isActive = item.classList.contains("active");
         item.classList.toggle("active", !isActive);
