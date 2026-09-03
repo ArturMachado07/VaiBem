@@ -71,9 +71,60 @@
 
 <main class="login-page" id="main-content">
 
-<div class="login-container">
+<div class="auth-container" id="authContainer">
 
-<div class="login-card">
+<div class="auth-panel auth-panel-signup">
+
+<div class="login-header">
+    <img src="assets/logo.svg" alt="Vai Bem">
+    <h1>Criar conta</h1>
+    <p>Regista-te para começares a reservar as tuas viagens.</p>
+</div>
+
+<div class="form-status" id="signupStatus" role="status"></div>
+
+<form class="login-form" id="signupForm" novalidate>
+
+<div class="login-field" id="signupNameField">
+    <label for="signupName">Nome completo</label>
+    <input type="text" id="signupName" name="name" placeholder="O teu nome" autocomplete="name" required>
+    <span class="field-error"></span>
+</div>
+
+<div class="login-field" id="signupEmailField">
+    <label for="signupEmail">Email</label>
+    <input type="email" id="signupEmail" name="email" placeholder="seu@email.com" autocomplete="email" required>
+    <span class="field-error"></span>
+</div>
+
+<div class="login-field" id="signupPasswordField">
+    <label for="signupPassword">Palavra-passe</label>
+    <input type="password" id="signupPassword" name="password" placeholder="••••••••" autocomplete="new-password" required minlength="6">
+    <button type="button" class="login-toggle-password" id="togglePasswordSignup" aria-label="Mostrar palavra-passe">
+        <img src="assets/icons/arrow-right.svg" alt="">
+    </button>
+    <span class="field-error"></span>
+</div>
+
+<button type="submit" class="login-submit" id="signupSubmit">Criar conta <img src="assets/icons/arrow-right_white.svg" alt=""></button>
+
+</form>
+
+<div class="login-divider">
+    <span>ou</span>
+</div>
+
+<div class="login-social">
+    <div id="googleSignInBtnSignup" class="google-signin-btn"></div>
+</div>
+
+<div class="login-signup">
+    Já tens conta? <button type="button" class="link-inline" id="switchToSignIn">Entrar</button>
+</div>
+
+</div>
+
+<div class="auth-panel auth-panel-signin">
 
 <div class="login-header">
     <img src="assets/logo.svg" alt="Vai Bem">
@@ -121,34 +172,26 @@
 </div>
 
 <div class="login-signup">
-    Ainda não tens conta? <button type="button" class="link-inline" data-coming-soon="Criar conta::O registo de novas contas vai abrir em breve, junto com o lançamento da app.">Criar conta</button>
+    Ainda não tens conta? <button type="button" class="link-inline" id="switchToSignUp">Criar conta</button>
 </div>
 
 </div>
 
-<div class="login-illustration">
-
-<div class="login-illustration-content">
-    <img src="assets/bus_vaibem-2d.png" alt="Vai Bem" width="138" height="51">
-    <h2>Vai bem, contigo sempre.</h2>
-    <p>Rotas fixas, horários certos para tornar o teu dia mais simples.</p>
-
-    <div class="login-illustration-features">
-        <div class="login-ill-feature">
-            <img src="assets/icons/check.svg" alt="">
-            <span>Reserva rápida</span>
+<div class="auth-overlay-container">
+    <div class="auth-overlay">
+        <div class="auth-overlay-panel auth-overlay-left">
+            <img src="assets/bus_vaibem-2d.png" alt="Vai Bem" width="110" height="41">
+            <h2>Vai bem, contigo sempre.</h2>
+            <p>Já tens conta? Entra para gerires as tuas reservas e horários.</p>
+            <button type="button" class="auth-ghost-btn" id="overlayToSignIn">Entrar</button>
         </div>
-        <div class="login-ill-feature">
-            <img src="assets/icons/check.svg" alt="">
-            <span>Preço justo</span>
-        </div>
-        <div class="login-ill-feature">
-            <img src="assets/icons/check.svg" alt="">
-            <span>Motoristas verificados</span>
+        <div class="auth-overlay-panel auth-overlay-right">
+            <img src="assets/bus_vaibem-2d.png" alt="Vai Bem" width="110" height="41">
+            <h2>Olá!</h2>
+            <p>Cria a tua conta e começa a reservar viagens em segundos, com rotas fixas e horários certos.</p>
+            <button type="button" class="auth-ghost-btn" id="overlayToSignUp">Criar conta</button>
         </div>
     </div>
-</div>
-
 </div>
 
 </div>
@@ -159,6 +202,7 @@
 <script src="js/api.js"></script>
 <script src="js/forms.js"></script>
 <script src="js/login.js"></script>
+<script src="js/signup.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="js/google-auth.js"></script>
 <script src="main.js"></script>

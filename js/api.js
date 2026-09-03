@@ -49,6 +49,19 @@
             });
         },
 
+        // TODO: substituir por fetch("/api/auth/register", { method: "POST", body: JSON.stringify(payload) })
+        // Mesma lógica honesta do login(): ainda não há backend a criar
+        // contas, por isso rejeitamos sempre em vez de fingir sucesso.
+        // O "Continuar com Google" funciona à parte (é autenticação real do
+        // Google, ver js/google-auth.js), este método cobre só o registo
+        // por email/palavra-passe.
+        register(payload) {
+            return Promise.reject({
+                code: "NOT_IMPLEMENTED",
+                message: "O registo por email ainda não está ligado a um servidor — usa \"Continuar com Google\" para entrares já, ou tenta novamente quando a app estiver disponível."
+            });
+        },
+
         // TODO: substituir por fetch("/api/companies", { method: "POST", body: JSON.stringify(payload) })
         // Sem backend disponível ainda: usamos um "mailto" como integração
         // provisória para que o pedido chegue mesmo assim a alguém, em vez

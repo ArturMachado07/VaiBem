@@ -68,8 +68,11 @@
             auto_select: false
         });
 
-        const container = document.getElementById("googleSignInBtn");
-        if (container) {
+        // Pode existir mais do que um botão na página (ex.: painel de
+        // Entrar e painel de Criar conta no login.html deslizante).
+        ["googleSignInBtn", "googleSignInBtnSignup"].forEach(id => {
+            const container = document.getElementById(id);
+            if (!container) return;
             google.accounts.id.renderButton(container, {
                 type: "standard",
                 theme: "outline",
@@ -79,7 +82,7 @@
                 logo_alignment: "left",
                 width: 320
             });
-        }
+        });
     }
 
     if (document.readyState === "complete") {

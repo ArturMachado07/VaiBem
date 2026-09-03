@@ -9,25 +9,161 @@
     padding: 40px 16px;
 }
 
-.login-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1000px;
+/* ===================================================================
+   PAINEL DESLIZANTE (Entrar / Criar conta)
+   Cartão com dois formulários sobrepostos (.auth-panel-signin e
+   .auth-panel-signup) e um painel colorido (.auth-overlay-container)
+   que desliza de um lado para o outro. A classe "right-panel-active"
+   em #authContainer controla a animação — ver js/signup.js.
+=================================================================== */
+
+.auth-container{
+    position: relative;
     width: 100%;
+    max-width: 960px;
+    min-height: 600px;
     background: #fff;
     border-radius: 24px;
     box-shadow: 0 12px 48px rgba(0, 0, 0, .06);
     overflow: hidden;
-    min-height: 600px;
 }
 
-/* CARD DO LOGIN */
-
-.login-card{
+.auth-panel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
     padding: 56px 44px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-y: auto;
+    transition: transform .6s ease-in-out, opacity .6s ease-in-out;
+}
+
+.auth-panel-signin{
+    z-index: 2;
+}
+
+.auth-panel-signup{
+    opacity: 0;
+    z-index: 1;
+}
+
+.auth-container.right-panel-active .auth-panel-signin{
+    transform: translateX(100%);
+}
+
+.auth-container.right-panel-active .auth-panel-signup{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: auth-show .6s;
+}
+
+@keyframes auth-show{
+    0%, 49.99%{ opacity: 0; z-index: 1; }
+    50%, 100%{ opacity: 1; z-index: 5; }
+}
+
+.auth-overlay-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform .6s ease-in-out;
+    z-index: 100;
+}
+
+.auth-container.right-panel-active .auth-overlay-container{
+    transform: translateX(-100%);
+}
+
+.auth-overlay{
+    position: relative;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--purple) 0%, #4a0e8f 100%);
+    color: #fff;
+    transform: translateX(0);
+    transition: transform .6s ease-in-out;
+}
+
+.auth-container.right-panel-active .auth-overlay{
+    transform: translateX(50%);
+}
+
+.auth-overlay-panel{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 48px;
+    transform: translateX(0);
+    transition: transform .6s ease-in-out;
+}
+
+.auth-overlay-panel img{
+    width: 110px;
+    height: auto;
+    margin-bottom: 28px;
+}
+
+.auth-overlay-panel h2{
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+}
+
+.auth-overlay-panel p{
+    color: rgba(255, 255, 255, .82);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.auth-overlay-left{
+    left: 0;
+    transform: translateX(-20%);
+}
+
+.auth-container.right-panel-active .auth-overlay-left{
+    transform: translateX(0);
+}
+
+.auth-overlay-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.auth-container.right-panel-active .auth-overlay-right{
+    transform: translateX(20%);
+}
+
+.auth-ghost-btn{
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .7);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.auth-ghost-btn:hover{
+    background: rgba(255, 255, 255, .12);
 }
 
 .login-header{
@@ -214,32 +350,6 @@
     margin: 0 auto;
 }
 
-.login-social-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    color: #444;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.login-social-btn:hover{
-    border-color: var(--purple);
-    background: #fafafa;
-}
-
-.login-social-btn img{
-    width: 20px;
-    height: 20px;
-}
-
 .login-signup{
     text-align: center;
     margin-top: 24px;
@@ -265,79 +375,43 @@
     text-decoration: underline;
 }
 
-/* ILUSTRAÇÃO LATERAL */
-
-.login-illustration{
-    background: var(--purple);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px 40px;
-    color: #fff;
-}
-
-.login-illustration-content{
-    text-align: center;
-    max-width: 360px;
-}
-
-.login-illustration-content > img{
-    max-width: 80%;
-    height: auto;
-    margin-bottom: 32px;
-}
-
-.login-illustration-content h2{
-    font-size: 26px;
-    line-height: 1.1;
-    margin-bottom: 12px;
-}
-
-.login-illustration-content > p{
-    color: rgba(255, 255, 255, .7);
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-bottom: 32px;
-}
-
-.login-illustration-features{
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    text-align: left;
-}
-
-.login-ill-feature{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, .85);
-}
-
-.login-ill-feature img{
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) invert(1);
-}
-
-/* RESPONSIVO TABLET */
+/* RESPONSIVO TABLET
+   Abaixo de 991px o cartão deixa de ter largura para a animação de
+   deslize (dois painéis de 50% + overlay). Em vez disso, mostra um
+   painel de cada vez com display:none/flex, controlado pela mesma
+   classe "right-panel-active" que o desktop usa para a animação. */
 
 @media(max-width: 991px){
 
-    .login-container{
-        grid-template-columns: 1fr;
+    .auth-container{
         max-width: 480px;
+        min-height: auto;
     }
 
-    .login-illustration{
+    .auth-overlay-container{
         display: none;
     }
 
-    .login-card{
+    .auth-panel{
+        position: relative;
+        width: 100%;
         padding: 40px 28px;
+        transform: none !important;
+        opacity: 1 !important;
+        animation: none !important;
+        z-index: auto !important;
+    }
+
+    .auth-panel-signup{
+        display: none;
+    }
+
+    .auth-container.right-panel-active .auth-panel-signup{
+        display: flex;
+    }
+
+    .auth-container.right-panel-active .auth-panel-signin{
+        display: none;
     }
 
 }
@@ -351,7 +425,7 @@
         padding: 24px 12px;
     }
 
-    .login-card{
+    .auth-panel{
         padding: 32px 20px;
     }
 
