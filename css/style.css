@@ -852,13 +852,13 @@ header.sticky .user-chip-btn{
 .about{
     display:grid;
     grid-template-columns:39% 61%;
-    align-items:stretch;
+    align-items:flex-start;
     background:#fbf9fa;
 }
 
 .about-image{
     overflow:hidden;
-    height:100%;
+    aspect-ratio:749 / 716;
 }
 
 .about img{
@@ -1033,14 +1033,6 @@ footer{
     .benefits-grid{
         grid-template-columns:1fr;
     }
-
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    .about-content{
-        padding:40px;
-    }
 }
 
 @media(max-width:768px){
@@ -1082,10 +1074,6 @@ footer{
 grid-template-columns:repeat(2,1fr);
 }
 
-.about{
-grid-template-columns:1fr;
-}
-
 .hero h1{
 font-size:clamp(34px, 4vw, 52px);
 }
@@ -1125,17 +1113,15 @@ body{
 }
 
 @media(max-width:1200px){
-    .about{ grid-template-columns:1fr; }
-    .about-image{ height:min(72vw, 620px); clip-path:none; }
-    .about-content{ padding:64px 8%; }
     .stats{ gap:20px; }
     .download-cta{ grid-template-columns:1fr auto; }
     .download-cta-qr{ grid-column:1 / -1; justify-self:end; }
     .footer-content{ flex-wrap:wrap; gap:28px; }
 }
 
-/* Desktop compacto: preserva o layout lado a lado sem comprimir o conteúdo. */
-@media(min-width:1201px) and (max-width:1500px){
+/* Tablet + desktop compacto: preserva o layout lado a lado (imagem + texto)
+   sem comprimir o conteúdo, do tablet (769px) até ao desktop mais estreito. */
+@media(min-width:769px) and (max-width:1500px){
     .about{ grid-template-columns:36% 64%; }
     .about-content{ padding:42px var(--content-gutter) 42px clamp(20px, 2vw, 40px); }
     .about-content > p{ font-size:16px; }
