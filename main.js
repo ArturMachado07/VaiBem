@@ -3,23 +3,25 @@ const logo = document.getElementById("logo");
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector(".primary-nav");
 
-window.addEventListener("scroll", () => {
+if(header && logo){
+    window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 80){
+        if(window.scrollY > 80){
 
-        header.classList.add("sticky");
+            header.classList.add("sticky");
 
-        logo.src = "assets/logo-white.svg";
+            logo.src = "assets/logo-white.svg";
 
-    }else{
+        }else{
 
-        header.classList.remove("sticky");
+            header.classList.remove("sticky");
 
-        logo.src = "assets/logo.svg";
+            logo.src = "assets/logo.svg";
 
-    }
+        }
 
-});
+    });
+}
 
 if(menuToggle && primaryNav){
     menuToggle.addEventListener("click", () => {

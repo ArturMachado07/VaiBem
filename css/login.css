@@ -1,12 +1,19 @@
-/* LOGIN PAGE */
+/* LOGIN PAGE (página sem cabeçalho — ver body.no-header) */
+
+body.no-header{
+    padding-top: 0;
+}
 
 .login-page{
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
-    padding: 40px 16px;
+    background: #fff;
+}
+
+.login-logo-link{
+    display: inline-block;
 }
 
 /* ===================================================================
@@ -20,11 +27,9 @@
 .auth-container{
     position: relative;
     width: 100%;
-    max-width: 960px;
-    min-height: 600px;
+    max-width: none;
+    min-height: 100vh;
     background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, .06);
     overflow: hidden;
 }
 
@@ -34,7 +39,8 @@
     left: 0;
     width: 50%;
     height: 100%;
-    padding: 56px 44px;
+    padding: 56px 64px;
+    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,16 +55,19 @@
 .auth-panel-signup{
     opacity: 0;
     z-index: 1;
+    pointer-events: none;
 }
 
 .auth-container.right-panel-active .auth-panel-signin{
     transform: translateX(100%);
+    pointer-events: none;
 }
 
 .auth-container.right-panel-active .auth-panel-signup{
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
+    pointer-events: auto;
     animation: auth-show .6s;
 }
 
@@ -384,8 +393,7 @@
 @media(max-width: 991px){
 
     .auth-container{
-        max-width: 480px;
-        min-height: auto;
+        min-height: 100vh;
     }
 
     .auth-overlay-container{
@@ -395,7 +403,8 @@
     .auth-panel{
         position: relative;
         width: 100%;
-        padding: 40px 28px;
+        padding: 64px 28px 40px;
+        justify-content: flex-start;
         transform: none !important;
         opacity: 1 !important;
         animation: none !important;
@@ -421,12 +430,11 @@
 @media(max-width: 768px){
 
     .login-page{
-        min-height: calc(100vh - 72px);
-        padding: 24px 12px;
+        min-height: 100vh;
     }
 
     .auth-panel{
-        padding: 32px 20px;
+        padding: 56px 20px 32px;
     }
 
     .login-header img{
