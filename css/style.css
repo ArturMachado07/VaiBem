@@ -1192,10 +1192,13 @@ body{
 /* Tablet / iPad — usa o mesmo menu hamburguer do mobile em vez do menu horizontal */
 @media(max-width:1024px){
     /* "Baixar App" some, mas o "Entrar" (ou o user-chip, já com sessão)
-       continua no cabeçalho, ao lado do botão do menu. */
+       continua no cabeçalho, encostado ao botão do menu — não no meio,
+       por isso empurramos os dois juntos para a direita com margin-left:auto. */
     .actions .btn-primary{ display:none; }
 
-    #menu03{ display:block; }
+    .actions{ margin-left:auto; }
+
+    #menu03{ display:block; margin-left:14px; }
 
     .primary-nav{
         display:block;
