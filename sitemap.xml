@@ -20,12 +20,6 @@
     </url>
 
     <url>
-        <loc>https://vai-bem-ten.vercel.app/premium.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
         <loc>https://vai-bem-ten.vercel.app/empresas.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

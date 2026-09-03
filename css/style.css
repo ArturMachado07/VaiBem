@@ -1532,12 +1532,6 @@ button.is-loading::after{
     display:block;
 }
 
-button.btn-premium{
-    border:0;
-    cursor:pointer;
-    font-family:inherit;
-}
-
 /* Scroll suave para âncoras internas (ex.: CTA "Solicitar" -> formulário) */
 html{
     scroll-behavior:smooth;
