@@ -99,22 +99,17 @@
 }
 
 /* Alguns ícones do site (ex. autocarro.svg) são desenhados a branco, para
-   ficarem sobre fundos de cor. Este badge dá-lhes esse fundo aqui no
-   perfil, onde os cards são brancos e o ícone ficaria invisível sozinho. */
-.profile-card-icon-badge{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:20px;
-    height:20px;
-    border-radius:6px;
-    background:var(--purple);
-    flex-shrink:0;
+   ficarem sobre fundos de cor. Aqui não há caixa — usamos o próprio SVG
+   como máscara para o pintar de verde, igual aos ícones das outras secções,
+   sem depender da cor original do ficheiro. */
+.profile-card-icon-mask{
+    display:inline-block;
+    background-color:#59D88C;
 }
 
-.profile-card-icon-badge img{
-    width:12px;
-    height:12px;
+.profile-card-icon-bus{
+    -webkit-mask:url('../assets/icons/autocarro.svg') no-repeat center / contain;
+    mask:url('../assets/icons/autocarro.svg') no-repeat center / contain;
 }
 
 .profile-card-header{
@@ -162,20 +157,9 @@
 }
 
 .profile-mc-icon{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:44px;
-    height:32px;
-    border-radius:8px;
-    background:var(--purple);
+    width:22px;
+    height:22px;
     flex-shrink:0;
-}
-
-.profile-mc-icon img{
-    width:18px;
-    height:18px;
-    filter:brightness(0) invert(1);
 }
 
 .profile-mc-info{
