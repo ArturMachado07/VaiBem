@@ -8,10 +8,14 @@
 }
 
 .about-hero-content{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
-    gap: 60px;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about-hero-text{
+    width: 40%;
 }
 
 .about-hero-tag{
@@ -71,16 +75,12 @@
 }
 
 .about-hero-image{
-    display: flex;
-    justify-content: flex-end;
+    width: 60%;
 }
 
 .about-hero-image img{
-    width: 115%;
-    max-width: none;
-    height: auto;
+    width: 135%;
     display: block;
-    object-fit: cover;
 }
 
 /* MISSÃO VISÃO VALORES */
@@ -283,8 +283,12 @@
 @media(max-width: 991px){
 
     .about-hero-content{
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 40px;
+    }
+
+    .about-hero-text{
+        width: 100%;
     }
 
     .about-hero-text h1{
@@ -292,12 +296,11 @@
     }
 
     .about-hero-image{
-        justify-content: center;
+        width: 100%;
     }
 
     .about-hero-image img{
         width: 100%;
-        border-radius: 16px;
     }
 
     .mvv-grid{
