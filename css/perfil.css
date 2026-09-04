@@ -98,6 +98,25 @@
     flex-shrink:0;
 }
 
+/* Alguns ícones do site (ex. autocarro.svg) são desenhados a branco, para
+   ficarem sobre fundos de cor. Este badge dá-lhes esse fundo aqui no
+   perfil, onde os cards são brancos e o ícone ficaria invisível sozinho. */
+.profile-card-icon-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    border-radius:6px;
+    background:var(--purple);
+    flex-shrink:0;
+}
+
+.profile-card-icon-badge img{
+    width:12px;
+    height:12px;
+}
+
 .profile-card-header{
     display:flex;
     justify-content:space-between;
@@ -168,12 +187,18 @@
 
 .profile-mc-info strong{
     font-size:14px;
+    letter-spacing:.5px;
     color:var(--purple);
 }
 
 .profile-mc-info span{
     font-size:12px;
     color:#8a8a8a;
+}
+
+.profile-mc-dates{
+    font-size:11px;
+    color:#b0adad;
 }
 
 .trip-preview-route{
