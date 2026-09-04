@@ -54,12 +54,15 @@
 
     /* ===================================================================
        PAGAMENTO — Referência Multicaixa ou Cartão Multiviagem
-       Sem processador de pagamentos real: a referência Multicaixa é uma
-       simulação (js/multicaixa.js, partilhada com perfil.html) disponível
-       para qualquer pessoa, com ou sem sessão — como uma referência real,
-       que pode ser paga por qualquer pessoa com o código. Pagar com o
-       Cartão Multiviagem exige sessão, porque o saldo simulado só existe
-       depois de a pessoa entrar (VaiBemStorage.getCardBalance).
+       Sem processador de pagamentos real: as duas formas de pagamento
+       exigem sessão (Google) antes de processar — não há como uma pessoa
+       sem conta "simular" um pagamento aqui. Quem não estiver logada é
+       encaminhada para login.html ao clicar em qualquer uma das opções.
+       Com o Cartão Multiviagem, se o saldo guardado (VaiBemStorage.
+       getCardBalance) já cobrir o valor com desconto, o débito acontece
+       logo no clique — sem passo extra de confirmação, ao contrário da
+       referência Multicaixa, que ainda pede "já paguei" para simular o
+       tempo real de compensação de uma referência.
     =================================================================== */
     function formatKz(value) {
         return `${Number(value).toLocaleString("pt-PT")} Kz`;
@@ -73,6 +76,8 @@
             return null;
         }
     }
+
+    const user = getUser();
 
     const payMcx = document.getElementById("payMulticaixa");
     const payMcxStatus = document.getElementById("payMulticaixaStatus");
@@ -90,9 +95,24 @@
         });
     }
 
+    if (payMcxStatus) {
+        payMcxStatus.textContent = user ? "Pagamento rápido e seguro" : "Inicia sessão para pagares";
+    }
+    if (payCardStatus) {
+        payCardStatus.textContent = !user
+            ? "Inicia sessão para pagares com o teu cartão"
+            : (window.VaiBemStorage ? `Saldo disponível: ${formatKz(window.VaiBemStorage.getCardBalance())}` : "");
+    }
+
     if (payMcx && payMcxStatus && typeof price === "number" && window.VaiBemMulticaixa) {
         payMcx.addEventListener("click", () => {
             if (paidVia) return;
+
+            if (!user) {
+                window.location.href = "login.html";
+                return;
+            }
+
             window.VaiBemMulticaixa.open({
                 title: "Pagar viagem por referência Multicaixa",
                 note: `${route.origin} → ${route.destination} · ${formatKz(price)}`,
@@ -105,14 +125,7 @@
     }
 
     if (payCard && payCardStatus && typeof price === "number") {
-        const user = getUser();
         const discountedPrice = Math.round(price * 0.85);
-
-        if (!user) {
-            payCardStatus.textContent = "Inicia sessão para pagares com o teu cartão";
-        } else if (window.VaiBemStorage) {
-            payCardStatus.textContent = `Saldo disponível: ${formatKz(window.VaiBemStorage.getCardBalance())}`;
-        }
 
         payCard.addEventListener("click", () => {
             if (paidVia) return;
@@ -129,6 +142,7 @@
                 return;
             }
 
+            // Saldo suficiente: débito automático, sem passo de confirmação extra.
             window.VaiBemStorage.addCardBalance(-discountedPrice);
             markPaid(payCard, payCardStatus, `Pago com o Cartão Multiviagem — poupaste ${formatKz(price - discountedPrice)} (15%)`);
         });
