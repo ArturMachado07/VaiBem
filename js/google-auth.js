@@ -25,7 +25,41 @@
         } catch (e) {
             // Ignora e usa o destino por omissão.
         }
+        // Sem "redirect" explícito na URL (ex.: chegou aqui a pagar em
+        // confirmacao.html), o destino segue o separador Particular/Empresa
+        // escolhido no ecrã de login — ver initLoginModeToggle().
+        if (document.body.dataset.loginMode === "empresa") return "empresas-funcionarios.html";
         return "index.html";
+    }
+
+    /**
+     * Separador "Particular"/"Empresa" no topo dos painéis de login. Não
+     * existe uma conta "empresa" real no servidor — continua a ser o mesmo
+     * login Google — só muda para onde a pessoa é enviada depois de entrar
+     * (ver getRedirectTarget acima).
+     */
+    function initLoginModeToggle() {
+        const toggles = document.querySelectorAll(".login-mode-toggle");
+        if (!toggles.length) return;
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener("click", event => {
+                const button = event.target.closest("[data-login-mode]");
+                if (!button) return;
+
+                document.querySelectorAll(".login-mode-toggle [data-login-mode]").forEach(btn => {
+                    btn.classList.remove("is-active");
+                    btn.setAttribute("aria-selected", "false");
+                });
+
+                document.querySelectorAll(`.login-mode-toggle [data-login-mode="${button.dataset.loginMode}"]`).forEach(btn => {
+                    btn.classList.add("is-active");
+                    btn.setAttribute("aria-selected", "true");
+                });
+
+                document.body.dataset.loginMode = button.dataset.loginMode;
+            });
+        });
     }
 
     function decodeJwt(token) {
@@ -107,4 +141,6 @@
     } else {
         window.addEventListener("load", init);
     }
+
+    initLoginModeToggle();
 })();

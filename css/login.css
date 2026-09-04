@@ -198,6 +198,39 @@ body.no-header{
     font-weight: 300;
 }
 
+/* Separador Particular/Empresa — mesmo login Google, só muda para onde a
+   pessoa é enviada a seguir (ver initLoginModeToggle em js/google-auth.js). */
+.login-mode-toggle{
+    display: flex;
+    background: #f4f1f6;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 28px;
+}
+
+.login-mode-btn{
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login-mode-btn:hover:not(.is-active){
+    color: var(--purple);
+}
+
+.login-mode-btn.is-active{
+    background: var(--purple);
+    color: #fff;
+}
+
 .login-form{
     display: flex;
     flex-direction: column;
