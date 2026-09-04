@@ -127,69 +127,18 @@
 
     renderBalance();
 
-    (function initMulticaixaSimulation() {
-        const topUpBtn = document.getElementById("mcTopUpBtn");
-        const overlay = document.getElementById("mcxOverlay");
-        if (!topUpBtn || !overlay) return;
-
-        const closeBtn = document.getElementById("mcxClose");
-        const confirmBtn = document.getElementById("mcxConfirm");
-        const amountButtons = overlay.querySelectorAll(".mcx-amount");
-        const referenceEl = document.getElementById("mcxReference");
-        const amountLabelEl = document.getElementById("mcxAmountLabel");
-
-        let selectedAmount = 5000;
-
-        function randomDigits(length) {
-            let digits = "";
-            for (let i = 0; i < length; i++) digits += Math.floor(Math.random() * 10);
-            return digits;
-        }
-
-        function generateReference() {
-            const raw = randomDigits(9);
-            referenceEl.textContent = `${raw.slice(0, 3)} ${raw.slice(3, 6)} ${raw.slice(6, 9)}`;
-        }
-
-        function selectAmount(amount) {
-            selectedAmount = amount;
-            amountLabelEl.textContent = formatKz(amount);
-            amountButtons.forEach(btn => {
-                btn.classList.toggle("is-selected", Number(btn.dataset.amount) === amount);
+    const topUpBtn = document.getElementById("mcTopUpBtn");
+    if (topUpBtn && window.VaiBemMulticaixa) {
+        topUpBtn.addEventListener("click", () => {
+            window.VaiBemMulticaixa.open({
+                title: "Carregar saldo por referência Multicaixa",
+                note: "Escolhe o valor e gera uma referência de pagamento.",
+                amounts: [2000, 5000, 10000],
+                onConfirm: amount => {
+                    if (window.VaiBemStorage) window.VaiBemStorage.addCardBalance(amount);
+                    renderBalance();
+                }
             });
-            generateReference();
-        }
-
-        function openModal() {
-            selectAmount(selectedAmount);
-            overlay.classList.add("is-open");
-            overlay.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeModal() {
-            overlay.classList.remove("is-open");
-            overlay.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
-        }
-
-        topUpBtn.addEventListener("click", openModal);
-        closeBtn.addEventListener("click", closeModal);
-        overlay.addEventListener("click", event => {
-            if (event.target === overlay) closeModal();
         });
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && overlay.classList.contains("is-open")) closeModal();
-        });
-
-        amountButtons.forEach(btn => {
-            btn.addEventListener("click", () => selectAmount(Number(btn.dataset.amount)));
-        });
-
-        confirmBtn.addEventListener("click", () => {
-            if (window.VaiBemStorage) window.VaiBemStorage.addCardBalance(selectedAmount);
-            renderBalance();
-            closeModal();
-        });
-    })();
+    }
 })();

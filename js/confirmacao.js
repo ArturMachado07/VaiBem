@@ -10,6 +10,7 @@
     const route = booking.route || window.VaiBemData.getRouteById(1);
     const date = booking.date || "";
     const time = booking.schedule ? booking.schedule.time : "";
+    const price = booking.schedule ? booking.schedule.price : (route ? route.price : null);
 
     const confirmationModal = document.querySelector(".confirmation-modal");
 
@@ -38,7 +39,7 @@
             date: date,
             time: time,
             seat: booking.booking && booking.booking.seat ? booking.booking.seat : "12A",
-            price: booking.schedule ? booking.schedule.price : (route ? route.price : null)
+            price: price
         });
 
         // A reserva deste protótipo termina aqui — limpa o estado para que
@@ -50,4 +51,86 @@
 
     document.getElementById("closeConfirmation").addEventListener("click", closeConfirmation);
     document.getElementById("doneConfirmation").addEventListener("click", closeConfirmation);
+
+    /* ===================================================================
+       PAGAMENTO — Referência Multicaixa ou Cartão Multiviagem
+       Sem processador de pagamentos real: a referência Multicaixa é uma
+       simulação (js/multicaixa.js, partilhada com perfil.html) disponível
+       para qualquer pessoa, com ou sem sessão — como uma referência real,
+       que pode ser paga por qualquer pessoa com o código. Pagar com o
+       Cartão Multiviagem exige sessão, porque o saldo simulado só existe
+       depois de a pessoa entrar (VaiBemStorage.getCardBalance).
+    =================================================================== */
+    function formatKz(value) {
+        return `${Number(value).toLocaleString("pt-PT")} Kz`;
+    }
+
+    function getUser() {
+        try {
+            const raw = localStorage.getItem("vaibem:user");
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    const payMcx = document.getElementById("payMulticaixa");
+    const payMcxStatus = document.getElementById("payMulticaixaStatus");
+    const payCard = document.getElementById("payCard");
+    const payCardStatus = document.getElementById("payCardStatus");
+
+    let paidVia = null;
+
+    function markPaid(button, statusEl, text) {
+        paidVia = button;
+        button.classList.add("is-paid");
+        statusEl.textContent = text;
+        [payMcx, payCard].forEach(btn => {
+            if (btn && btn !== button) btn.classList.add("is-locked");
+        });
+    }
+
+    if (payMcx && payMcxStatus && typeof price === "number" && window.VaiBemMulticaixa) {
+        payMcx.addEventListener("click", () => {
+            if (paidVia) return;
+            window.VaiBemMulticaixa.open({
+                title: "Pagar viagem por referência Multicaixa",
+                note: `${route.origin} → ${route.destination} · ${formatKz(price)}`,
+                amount: price,
+                onConfirm: () => {
+                    markPaid(payMcx, payMcxStatus, "Pago por referência Multicaixa");
+                }
+            });
+        });
+    }
+
+    if (payCard && payCardStatus && typeof price === "number") {
+        const user = getUser();
+        const discountedPrice = Math.round(price * 0.85);
+
+        if (!user) {
+            payCardStatus.textContent = "Inicia sessão para pagares com o teu cartão";
+        } else if (window.VaiBemStorage) {
+            payCardStatus.textContent = `Saldo disponível: ${formatKz(window.VaiBemStorage.getCardBalance())}`;
+        }
+
+        payCard.addEventListener("click", () => {
+            if (paidVia) return;
+
+            if (!user) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            const balance = window.VaiBemStorage.getCardBalance();
+            if (balance < discountedPrice) {
+                payCardStatus.textContent = `Saldo insuficiente (tens ${formatKz(balance)}) — a levar-te para carregares saldo…`;
+                setTimeout(() => { window.location.href = "perfil.html"; }, 1200);
+                return;
+            }
+
+            window.VaiBemStorage.addCardBalance(-discountedPrice);
+            markPaid(payCard, payCardStatus, `Pago com o Cartão Multiviagem — poupaste ${formatKz(price - discountedPrice)} (15%)`);
+        });
+    }
 })();

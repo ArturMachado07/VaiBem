@@ -108,8 +108,14 @@
         </article>
 
         <div class="confirmation-options">
-            <article><img src="assets/icons/Mcx express.svg" alt=""><div><strong>Referência Multicaixa</strong><span>Pagamento rápido e seguro</span></div></article>
-            <article><img src="assets/icons/cartão icone.svg" alt=""><div><strong>Cartão Multiviagem</strong><span>Saldo disponível: 3.200 Kz</span></div></article>
+            <button type="button" class="confirmation-option" id="payMulticaixa">
+                <img src="assets/icons/Mcx express.svg" alt="">
+                <div><strong>Referência Multicaixa</strong><span id="payMulticaixaStatus">Pagamento rápido e seguro</span></div>
+            </button>
+            <button type="button" class="confirmation-option" id="payCard">
+                <img src="assets/icons/cartão icone.svg" alt="">
+                <div><strong>Cartão Multiviagem</strong><span id="payCardStatus">A verificar saldo…</span></div>
+            </button>
         </div>
 
         <button class="confirmation-done" id="doneConfirmation" type="button">Fechar</button>
@@ -118,6 +124,7 @@
 
 <script src="js/data/routes.js"></script>
 <script src="js/storage.js"></script>
+<script src="js/multicaixa.js"></script>
 <script src="js/confirmacao.js"></script>
 <script src="main.js"></script>
 </body>
