@@ -75,6 +75,26 @@
     box-shadow: 0 8px 24px rgba(115, 247, 168, .3);
 }
 
+.empresas-hero-portal-link{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, .75);
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.empresas-hero-portal-link:hover{
+    color: var(--green);
+}
+
+.empresas-hero-portal-link img{
+    width: 12px;
+    height: 12px;
+}
+
 .empresas-hero-image{
     display: flex;
     justify-content: center;

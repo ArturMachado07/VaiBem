@@ -1,0 +1,541 @@
+/* ===================================================================
+   PORTAL DA EMPRESA — Gestão de funcionários (empresas-funcionarios.html)
+   Sem conta em servidor: os funcionários ficam guardados no
+   localStorage deste dispositivo (vaibem:companyEmployees), com dados
+   de exemplo na primeira visita para o admin perceber o ecrã antes de
+   introduzir a sua própria equipa.
+=================================================================== */
+
+.cp-portal{
+    padding:40px 0 90px;
+    background:#fbf9fa;
+    min-height:calc(100vh - 100px);
+}
+
+.cp-topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    background:linear-gradient(135deg, var(--purple) 0%, #1a0038 100%);
+    border-radius:16px;
+    padding:18px 24px;
+    margin-bottom:28px;
+}
+
+.cp-topbar-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.cp-badge{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:var(--green);
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:14px;
+    flex-shrink:0;
+}
+
+.cp-topbar-title{
+    margin:0;
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+}
+
+.cp-topbar-sub{
+    margin:0;
+    color:rgba(255,255,255,.6);
+    font-size:12px;
+}
+
+.cp-tabs{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.cp-tab{
+    background:none;
+    border:none;
+    font:inherit;
+    font-size:13px;
+    color:rgba(255,255,255,.7);
+    cursor:pointer;
+    padding:0;
+    white-space:nowrap;
+}
+
+.cp-tab:hover{
+    color:#fff;
+}
+
+.cp-tab-active{
+    color:var(--green);
+    font-weight:700;
+    cursor:default;
+}
+
+.cp-title{
+    color:var(--purple);
+    font-size:28px;
+    margin:0 0 6px;
+}
+
+.cp-intro{
+    color:#8a8a8a;
+    font-size:14px;
+    margin:0 0 24px;
+    max-width:640px;
+    line-height:1.5;
+}
+
+.cp-stats{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+    margin-bottom:24px;
+}
+
+.cp-stat{
+    background:#fff;
+    border:1px solid #e8e4e7;
+    border-radius:12px;
+    padding:16px;
+}
+
+.cp-stat-label{
+    margin:0 0 6px;
+    font-size:12px;
+    color:#8a8a8a;
+}
+
+.cp-stat-value{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+    color:var(--purple);
+}
+
+.cp-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+}
+
+.cp-search{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:0 14px;
+    flex:1;
+    min-width:220px;
+    max-width:340px;
+}
+
+.cp-search input{
+    border:none;
+    outline:none;
+    padding:11px 0;
+    font:inherit;
+    font-size:14px;
+    width:100%;
+    background:transparent;
+}
+
+.cp-btn-add{
+    background:var(--purple);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:12px 20px;
+    font:inherit;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.cp-btn-add:hover{
+    background:var(--purple-dark);
+}
+
+.cp-table-wrap{
+    background:#fff;
+    border:1px solid #e8e4e7;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.cp-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.cp-table thead th{
+    text-align:left;
+    font-size:12px;
+    color:#8a8a8a;
+    font-weight:700;
+    padding:12px 20px;
+    background:#f7f4f8;
+}
+
+.cp-table tbody td{
+    padding:14px 20px;
+    border-top:1px solid #f0edf1;
+    font-size:14px;
+    color:#333;
+    vertical-align:middle;
+}
+
+.cp-col-actions{
+    text-align:right;
+}
+
+.cp-emp{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.cp-emp-avatar{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#eae6f5;
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:700;
+    flex-shrink:0;
+}
+
+.cp-emp-name{
+    margin:0;
+    font-weight:600;
+    color:#222;
+    font-size:14px;
+}
+
+.cp-emp-email{
+    margin:0;
+    color:#a3a3a3;
+    font-size:12px;
+}
+
+.cp-status{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:20px;
+}
+
+.cp-status-ativo{
+    color:#0f6e56;
+    background:#e1f5ee;
+}
+
+.cp-status-pendente{
+    color:#854f0b;
+    background:#faeeda;
+}
+
+.cp-status-inativo{
+    color:#5f5e5a;
+    background:#f1efe8;
+}
+
+.cp-row-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+.cp-icon-btn{
+    width:30px;
+    height:30px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    color:#666;
+    padding:0;
+}
+
+.cp-icon-btn:hover{
+    border-color:var(--purple);
+    color:var(--purple);
+}
+
+.cp-empty{
+    margin:0;
+    padding:32px 20px;
+    text-align:center;
+    color:#8a8a8a;
+    font-size:14px;
+}
+
+/* MODAL — adicionar/editar funcionário */
+
+.cp-modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:none;
+    place-items:center;
+    padding:24px 16px;
+    overflow:hidden;
+    background:rgba(48, 55, 70, .42);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+}
+
+.cp-modal-overlay.is-open{
+    display:grid;
+}
+
+.cp-modal{
+    position:relative;
+    width:min(440px, 100%);
+    max-height:calc(100dvh - 48px);
+    overflow-y:auto;
+    background:#fff;
+    border-radius:16px;
+    padding:32px 28px;
+    box-shadow:0 20px 35px rgba(19, 27, 36, .22);
+}
+
+.cp-modal h2{
+    margin:0 0 20px;
+    color:var(--purple);
+    font-size:20px;
+}
+
+.cp-modal-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:36px;
+    height:36px;
+    border:1px solid #dfe7e4;
+    border-radius:50%;
+    background:transparent;
+    color:#71808b;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+}
+
+.cp-modal-close .close{
+    position:relative;
+    display:block;
+    width:14px;
+    height:14px;
+}
+
+.cp-modal-close .close::before,
+.cp-modal-close .close::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:14px;
+    height:1.5px;
+    border-radius:1px;
+    background:currentColor;
+}
+
+.cp-modal-close .close::before{
+    transform:translate(-50%, -50%) rotate(45deg);
+}
+
+.cp-modal-close .close::after{
+    transform:translate(-50%, -50%) rotate(-45deg);
+}
+
+.cp-field{
+    display:block;
+    margin-bottom:14px;
+}
+
+.cp-field span{
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+    font-weight:600;
+    color:#333;
+}
+
+.cp-field input,
+.cp-field select{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font:inherit;
+    font-size:14px;
+    box-sizing:border-box;
+    background:#fff;
+}
+
+.cp-field input:focus,
+.cp-field select:focus{
+    outline:none;
+    border-color:var(--purple);
+}
+
+.cp-form-error{
+    color:#c0392b;
+    font-size:13px;
+    margin:0 0 14px;
+}
+
+.cp-form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:6px;
+}
+
+.cp-btn-secondary{
+    background:#fff;
+    border:1px solid #e0a0a0;
+    color:#c0392b;
+    border-radius:8px;
+    padding:12px 18px;
+    font:inherit;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    margin-right:auto;
+}
+
+.cp-btn-secondary:hover{
+    background:#fdf0f0;
+}
+
+/* RESPONSIVO TABLET */
+
+@media(max-width:1024px){
+    .cp-stats{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+/* RESPONSIVO PHONE */
+
+@media(max-width:768px){
+
+    .cp-portal{
+        padding:28px 0 60px;
+    }
+
+    .cp-topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:16px 18px;
+    }
+
+    .cp-tabs{
+        width:100%;
+        overflow-x:auto;
+        gap:18px;
+    }
+
+    .cp-title{
+        font-size:24px;
+    }
+
+    .cp-stats{
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+    }
+
+    .cp-stat{
+        padding:12px;
+    }
+
+    .cp-stat-value{
+        font-size:18px;
+    }
+
+    .cp-toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .cp-search{
+        max-width:none;
+    }
+
+    .cp-table thead{
+        display:none;
+    }
+
+    .cp-table,
+    .cp-table tbody,
+    .cp-table tr,
+    .cp-table td{
+        display:block;
+        width:100%;
+    }
+
+    .cp-table tr{
+        padding:14px 16px;
+        border-top:1px solid #f0edf1;
+    }
+
+    .cp-table tr:first-child{
+        border-top:none;
+    }
+
+    .cp-table td{
+        padding:6px 0;
+        border:none;
+    }
+
+    .cp-table td[data-label]::before{
+        content:attr(data-label);
+        display:block;
+        font-size:11px;
+        color:#a3a3a3;
+        margin-bottom:2px;
+    }
+
+    .cp-cell-emp::before{
+        display:none;
+    }
+
+    .cp-col-actions{
+        text-align:left;
+    }
+
+    .cp-row-actions{
+        justify-content:flex-start;
+        margin-top:4px;
+    }
+
+    .cp-modal{
+        padding:26px 20px;
+    }
+}

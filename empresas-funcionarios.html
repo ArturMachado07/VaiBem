@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Funcionários | Vai Bem Empresas</title>
+<meta name="description" content="Portal Vai Bem Empresas: gere os funcionários da tua empresa, as rotas atribuídas e o estado de cada colaborador.">
+<link rel="canonical" href="https://vai-bem-ten.vercel.app/empresas-funcionarios.html">
+
+<meta name="robots" content="noindex, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vai Bem">
+<meta property="og:title" content="Funcionários | Vai Bem Empresas">
+<meta property="og:description" content="Portal Vai Bem Empresas: gere os funcionários da tua empresa, as rotas atribuídas e o estado de cada colaborador.">
+<meta property="og:image" content="https://vai-bem-ten.vercel.app/assets/og-image.png">
+<meta property="og:url" content="https://vai-bem-ten.vercel.app/empresas-funcionarios.html">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/empresas-funcionarios.css">
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#main-content">Saltar para o conteúdo</a>
+
+<header id="header" class="header">
+
+<div class="container nav">
+
+<div class="logo">
+    <a href="index.html">
+        <img id="logo" src="assets/logo.svg" alt="Vai Bem">
+    </a>
+</div>
+
+<nav id="primary-nav-menu" class="primary-nav" aria-label="Navegação principal">
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="about.html">Sobre Nós</a></li>
+<li><a href="rotas.html">Rotas Fixas</a></li>
+<li><a class="active" href="empresas.html">Para Empresas</a></li>
+<li><a href="cartao-multiviagem.html">Cartão Multiviagem</a></li>
+<li><a href="ajuda.html">Ajuda</a></li>
+</ul>
+</nav>
+
+<div class="actions">
+<button id="navLoginBtn" class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+<button type="button" class="btn-primary" data-coming-soon="Baixar a app Vai Bem::A app está quase a chegar à Google Play e à App Store. Fica atento às nossas redes sociais para seres o primeiro a saber.">Baixar App</button>
+</div>
+
+<button id="menu03" class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav-menu">
+    <span></span><span></span><span></span>
+</button>
+
+</div>
+
+</header>
+
+<main id="main-content">
+
+<section class="cp-portal">
+<div class="container">
+
+<div class="cp-topbar">
+    <div class="cp-topbar-brand">
+        <span class="cp-badge">VB</span>
+        <div>
+            <p class="cp-topbar-title">Portal da Empresa</p>
+            <p class="cp-topbar-sub" id="companyAdminLabel">A carregar…</p>
+        </div>
+    </div>
+    <nav class="cp-tabs" aria-label="Secções do portal da empresa">
+        <button type="button" class="cp-tab" data-coming-soon="Painel::O resumo geral do portal está a ser preparado. Por agora, gere os teus funcionários abaixo.">Painel</button>
+        <span class="cp-tab cp-tab-active" aria-current="page">Funcionários</span>
+        <button type="button" class="cp-tab" data-coming-soon="Rotas::A atribuição avançada de rotas por equipa está a ser preparada.">Rotas</button>
+        <button type="button" class="cp-tab" data-coming-soon="Faturação::A faturação centralizada da empresa está a ser preparada.">Faturação</button>
+    </nav>
+</div>
+
+<h1 class="cp-title">Funcionários</h1>
+<p class="cp-intro">Adiciona os colaboradores da tua empresa, atribui-lhes uma rota Vai Bem e acompanha o estado de cada um. Os dados ficam guardados neste dispositivo.</p>
+
+<div class="cp-stats" id="cpStats">
+    <div class="cp-stat">
+        <p class="cp-stat-label">Funcionários</p>
+        <p class="cp-stat-value" id="statTotal">0</p>
+    </div>
+    <div class="cp-stat">
+        <p class="cp-stat-label">Ativos</p>
+        <p class="cp-stat-value" id="statActive">0</p>
+    </div>
+    <div class="cp-stat">
+        <p class="cp-stat-label">Rotas atribuídas</p>
+        <p class="cp-stat-value" id="statRoutes">0</p>
+    </div>
+    <div class="cp-stat">
+        <p class="cp-stat-label">Gasto este mês</p>
+        <p class="cp-stat-value" id="statSpend">0 Kz</p>
+    </div>
+</div>
+
+<div class="cp-toolbar">
+    <div class="cp-search">
+        <input type="search" id="employeeSearch" placeholder="Procurar por nome, email ou departamento">
+    </div>
+    <button type="button" class="cp-btn-add" id="addEmployeeBtn">Adicionar funcionário</button>
+</div>
+
+<div class="cp-table-wrap">
+    <table class="cp-table" id="employeeTable">
+        <thead>
+            <tr>
+                <th>Funcionário</th>
+                <th>Departamento</th>
+                <th>Rota</th>
+                <th>Estado</th>
+                <th class="cp-col-actions">Ações</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+    <p class="cp-empty" id="employeeEmpty" hidden>Nenhum funcionário encontrado.</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<div class="cp-modal-overlay" id="employeeModalOverlay">
+    <div class="cp-modal" role="dialog" aria-modal="true" aria-labelledby="employeeModalTitle">
+        <button type="button" class="cp-modal-close" id="employeeModalClose" aria-label="Fechar">
+            <span class="close big" aria-hidden="true"></span>
+        </button>
+        <h2 id="employeeModalTitle">Adicionar funcionário</h2>
+        <form id="employeeForm" novalidate>
+            <label class="cp-field">
+                <span>Nome completo</span>
+                <input type="text" id="empName" name="empName" required>
+            </label>
+            <label class="cp-field">
+                <span>Email</span>
+                <input type="email" id="empEmail" name="empEmail" required>
+            </label>
+            <label class="cp-field">
+                <span>Departamento</span>
+                <input type="text" id="empDepartment" name="empDepartment" required>
+            </label>
+            <label class="cp-field">
+                <span>Rota atribuída</span>
+                <select id="empRoute" name="empRoute">
+                    <option value="">Sem rota</option>
+                </select>
+            </label>
+            <label class="cp-field">
+                <span>Estado</span>
+                <select id="empStatus" name="empStatus">
+                    <option value="ativo">Ativo</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+            </label>
+            <p class="cp-form-error" id="employeeFormError" hidden></p>
+            <div class="cp-form-actions">
+                <button type="button" class="cp-btn-secondary" id="employeeDeleteBtn" hidden>Remover</button>
+                <button type="submit" class="cp-btn-add">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <img src="assets/logo-white.svg" alt="Vai Bem">
+            <span>© 2026 Vai Bem. Todos os direitos reservados.</span>
+        </div>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <a href="about.html">Sobre nós</a>
+            <a href="cartao-multiviagem.html">Cartão Multiviagem</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="empresas.html">Para Empresas</a>
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Privacidade</a>
+        </nav>
+        <div class="footer-socials">
+            <button type="button" class="social-icon" aria-label="Facebook" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/facebook.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="Instagram" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/instagram.svg" alt=""></button>
+            <button type="button" class="social-icon" aria-label="LinkedIn" data-coming-soon="Redes sociais::As nossas páginas oficiais estão a ser preparadas. Volta em breve!"><img src="assets/linkedin.svg" alt=""></button>
+        </div>
+    </div>
+</footer>
+
+<script src="js/data/routes.js"></script>
+<script src="js/empresas-funcionarios.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
