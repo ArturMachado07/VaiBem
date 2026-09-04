@@ -65,9 +65,9 @@
         document.getElementById("tripOrigin").textContent = booking.route.origin || "";
         document.getElementById("tripDestination").textContent = booking.route.destination || "";
         const dateTimeParts = [booking.date, booking.schedule.time].filter(Boolean).join(" · ");
-        document.getElementById("tripDateTime").textContent = dateTimeParts;
+        document.getElementById("tripDateTimeText").textContent = dateTimeParts;
         const seat = booking.booking && booking.booking.seat ? `Assento ${booking.booking.seat}` : "Assento por atribuir";
-        document.getElementById("tripSeat").textContent = seat;
+        document.getElementById("tripSeatText").textContent = seat;
     }
 
     // Histórico de viagens confirmadas
@@ -86,7 +86,7 @@
             const priceLabel = typeof trip.price === "number" ? `${trip.price.toLocaleString("pt-PT")} Kz` : "";
 
             li.innerHTML = `
-                <span class="profile-history-route">${routeLabel}</span>
+                <span class="profile-history-route"><img src="assets/icons/autocarro.svg" alt="" class="profile-history-icon">${routeLabel}</span>
                 <span class="profile-history-date">${trip.date || ""}</span>
                 <span class="profile-history-price">${priceLabel}</span>
             `;
@@ -102,4 +102,92 @@
         }
         window.location.href = "index.html";
     });
+
+    /* ===================================================================
+       CARTÃO MULTIVIAGEM — saldo e simulação de referência Multicaixa
+       Não há processador de pagamentos real ligado ao site. Para "Carregar
+       saldo" ter algum efeito (em vez de só abrir um formulário de contacto
+       como em cartao-multiviagem.html), simulamos uma referência Multicaixa
+       — Entidade/Referência/Valor, o formato que qualquer app bancária ou
+       ATM angolano usa — e, ao "confirmar", somamos o valor ao saldo
+       guardado neste dispositivo (VaiBemStorage.getCardBalance). O modal
+       deixa claro que é uma simulação, não um pagamento real.
+    =================================================================== */
+    function formatKz(value) {
+        return `${Number(value).toLocaleString("pt-PT")} Kz`;
+    }
+
+    function renderBalance() {
+        const balanceEl = document.getElementById("mcBalanceLabel");
+        if (!balanceEl || !window.VaiBemStorage) return;
+        balanceEl.textContent = `Saldo: ${formatKz(window.VaiBemStorage.getCardBalance())}`;
+    }
+
+    renderBalance();
+
+    (function initMulticaixaSimulation() {
+        const topUpBtn = document.getElementById("mcTopUpBtn");
+        const overlay = document.getElementById("mcxOverlay");
+        if (!topUpBtn || !overlay) return;
+
+        const closeBtn = document.getElementById("mcxClose");
+        const confirmBtn = document.getElementById("mcxConfirm");
+        const amountButtons = overlay.querySelectorAll(".mcx-amount");
+        const referenceEl = document.getElementById("mcxReference");
+        const amountLabelEl = document.getElementById("mcxAmountLabel");
+
+        let selectedAmount = 5000;
+
+        function randomDigits(length) {
+            let digits = "";
+            for (let i = 0; i < length; i++) digits += Math.floor(Math.random() * 10);
+            return digits;
+        }
+
+        function generateReference() {
+            const raw = randomDigits(9);
+            referenceEl.textContent = `${raw.slice(0, 3)} ${raw.slice(3, 6)} ${raw.slice(6, 9)}`;
+        }
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            amountLabelEl.textContent = formatKz(amount);
+            amountButtons.forEach(btn => {
+                btn.classList.toggle("is-selected", Number(btn.dataset.amount) === amount);
+            });
+            generateReference();
+        }
+
+        function openModal() {
+            selectAmount(selectedAmount);
+            overlay.classList.add("is-open");
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            overlay.classList.remove("is-open");
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        topUpBtn.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", event => {
+            if (event.target === overlay) closeModal();
+        });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && overlay.classList.contains("is-open")) closeModal();
+        });
+
+        amountButtons.forEach(btn => {
+            btn.addEventListener("click", () => selectAmount(Number(btn.dataset.amount)));
+        });
+
+        confirmBtn.addEventListener("click", () => {
+            if (window.VaiBemStorage) window.VaiBemStorage.addCardBalance(selectedAmount);
+            renderBalance();
+            closeModal();
+        });
+    })();
 })();

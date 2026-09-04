@@ -143,6 +143,36 @@
         localStorage.removeItem(HISTORY_KEY);
     }
 
+    /**
+     * Saldo simulado do Cartão Multiviagem (perfil.html). Não existe
+     * processador de pagamentos real ligado — o valor fica guardado neste
+     * dispositivo e só muda através da simulação de referência Multicaixa
+     * em perfil.js, para o "Carregar saldo" ter efeito visível e honesto
+     * sobre o que é (uma simulação), sem fingir um saldo em servidor.
+     */
+    const BALANCE_KEY = "vaibem:cardBalance";
+    const DEFAULT_BALANCE = 3200;
+
+    function getCardBalance() {
+        try {
+            const raw = localStorage.getItem(BALANCE_KEY);
+            const value = raw === null ? DEFAULT_BALANCE : Number(raw);
+            return Number.isFinite(value) ? value : DEFAULT_BALANCE;
+        } catch (error) {
+            return DEFAULT_BALANCE;
+        }
+    }
+
+    function addCardBalance(amount) {
+        const next = getCardBalance() + Number(amount || 0);
+        try {
+            localStorage.setItem(BALANCE_KEY, String(next));
+        } catch (error) {
+            console.warn("VaiBemStorage: não foi possível guardar o saldo do cartão.", error);
+        }
+        return next;
+    }
+
     global.VaiBemStorage = {
         getBooking,
         saveBooking,
@@ -150,6 +180,8 @@
         clearBooking,
         getHistory,
         addToHistory,
-        clearHistory
+        clearHistory,
+        getCardBalance,
+        addCardBalance
     };
 })(window);

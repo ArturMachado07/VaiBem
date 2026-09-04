@@ -81,24 +81,21 @@
     <div class="profile-grid">
 
         <article class="profile-card profile-card-card" id="cardMultiviagem">
-            <h2>Cartão Multiviagem</h2>
-            <div class="profile-mc-visual">
-                <div class="profile-mc-top">
-                    <span class="profile-mc-label">Multiviagem</span>
+            <h2><img src="assets/icons/cartão icone.svg" alt="" class="profile-card-icon">Cartão Multiviagem</h2>
+            <div class="profile-mc-row">
+                <div class="profile-mc-icon">
+                    <img src="assets/icons/cartão icone.svg" alt="">
                 </div>
-                <p class="profile-mc-number">**** **** **** 4821</p>
-            </div>
-            <div class="profile-mc-balance">
-                <div>
-                    <span class="profile-mc-balance-label">Saldo disponível</span>
-                    <strong class="profile-mc-balance-value">3.200 Kz</strong>
+                <div class="profile-mc-info">
+                    <strong>Cartão Multiviagem •• 4821</strong>
+                    <span id="mcBalanceLabel">Saldo: 3.200 Kz</span>
                 </div>
-                <a href="cartao-multiviagem.html#adesao" class="btn-mc-small">Carregar saldo</a>
             </div>
+            <button type="button" class="btn-mc-small" id="mcTopUpBtn">Carregar saldo</button>
         </article>
 
         <article class="profile-card" id="nextTrip">
-            <h2>Próxima viagem</h2>
+            <h2><img src="assets/icons/autocarro.svg" alt="" class="profile-card-icon">Próxima viagem</h2>
             <div class="profile-card-empty" id="nextTripEmpty">
                 <p>Ainda não tens nenhuma viagem marcada.</p>
                 <a href="rotas.html" class="btn-mc-small">Reservar agora</a>
@@ -109,8 +106,8 @@
                     <span aria-hidden="true">→</span>
                     <strong id="tripDestination"></strong>
                 </div>
-                <p id="tripDateTime" class="trip-preview-meta"></p>
-                <p id="tripSeat" class="trip-preview-meta"></p>
+                <p id="tripDateTime" class="trip-preview-meta"><img src="assets/icons/calendario-2.svg" alt="" class="trip-preview-icon"><span id="tripDateTimeText"></span></p>
+                <p id="tripSeat" class="trip-preview-meta"><img src="assets/icons/assento-icon.svg" alt="" class="trip-preview-icon"><span id="tripSeatText"></span></p>
             </div>
         </article>
 
@@ -118,7 +115,7 @@
 
     <article class="profile-card profile-card-wide">
         <div class="profile-card-header">
-            <h2>Histórico de viagens</h2>
+            <h2><img src="assets/icons/tempo.svg" alt="" class="profile-card-icon">Histórico de viagens</h2>
         </div>
         <div class="profile-history-empty" id="historyEmpty">
             <p>As tuas viagens confirmadas vão aparecer aqui.</p>
@@ -127,7 +124,7 @@
     </article>
 
     <article class="profile-card profile-card-wide">
-        <h2>Descontos e promoções</h2>
+        <h2><img src="assets/icons/preco-justo_icone.svg" alt="" class="profile-card-icon">Descontos e promoções</h2>
         <div class="profile-promos">
             <div class="profile-promo">
                 <span class="profile-promo-tag">15%</span>
@@ -152,6 +149,33 @@
 
 </div>
 </section>
+
+<div class="mcx-overlay" id="mcxOverlay" aria-hidden="true">
+    <section class="mcx-modal" role="dialog" aria-modal="true" aria-labelledby="mcxTitle">
+        <button type="button" class="mcx-close" id="mcxClose" aria-label="Fechar">&times;</button>
+
+        <img src="assets/icons/Mcx express.svg" alt="" class="mcx-modal-icon">
+        <h2 id="mcxTitle">Carregar saldo por referência Multicaixa</h2>
+        <p class="mcx-modal-note">Escolhe o valor e gera uma referência de pagamento.</p>
+
+        <div class="mcx-amounts" id="mcxAmounts">
+            <button type="button" class="mcx-amount" data-amount="2000">2.000 Kz</button>
+            <button type="button" class="mcx-amount is-selected" data-amount="5000">5.000 Kz</button>
+            <button type="button" class="mcx-amount" data-amount="10000">10.000 Kz</button>
+        </div>
+
+        <div class="mcx-ref-card">
+            <div class="mcx-ref-row"><span>Entidade</span><strong id="mcxEntity">00188</strong></div>
+            <div class="mcx-ref-row"><span>Referência</span><strong id="mcxReference">000 000 000</strong></div>
+            <div class="mcx-ref-row"><span>Valor</span><strong id="mcxAmountLabel">5.000 Kz</strong></div>
+        </div>
+
+        <p class="mcx-modal-hint">Paga esta referência num ATM, no Multicaixa Express ou na app do teu banco. Válida por 24 horas.</p>
+
+        <button type="button" class="btn-mc-small mcx-confirm" id="mcxConfirm">Já paguei — simular confirmação</button>
+        <p class="mcx-modal-disclaimer">Isto é uma simulação para demonstração. O carregamento real ainda não está ligado a um processador de pagamentos.</p>
+    </section>
+</div>
 
 </main>
 
