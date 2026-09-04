@@ -278,30 +278,19 @@
     font-weight: 300;
 }
 
+/* Tablet/iPad (769–1200px): mantém o hero de Sobre Nós lado a lado com a
+   imagem, tal como a hero principal da home, só reduz o título para caber. */
+@media(min-width:769px) and (max-width:1200px){
+
+    .about-hero-text h1{
+        font-size: clamp(30px, 4vw, 48px);
+    }
+
+}
+
 /* RESPONSIVO TABLET */
 
 @media(max-width: 991px){
-
-    .about-hero-content{
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .about-hero-text{
-        width: 100%;
-    }
-
-    .about-hero-text h1{
-        font-size: 48px;
-    }
-
-    .about-hero-image{
-        width: 100%;
-    }
-
-    .about-hero-image img{
-        width: 100%;
-    }
 
     .mvv-grid{
         grid-template-columns: 1fr;
@@ -328,12 +317,28 @@
         padding: 40px 0;
     }
 
+    .about-hero-content{
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .about-hero-text,
+    .about-hero-image{
+        width: 100%;
+    }
+
+    .about-hero-image img{
+        width: 100%;
+    }
+
     .about-hero-text h1{
         font-size: 36px;
     }
 
     .about-hero-text p{
         font-size: 15px;
+        margin: 0 auto;
     }
 
     .about-mvv{
