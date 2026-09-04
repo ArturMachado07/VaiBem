@@ -318,12 +318,11 @@
     }
 
     .about-hero-image{
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
     }
 
     .about-hero-image img{
-        width: 100%;
+        width: 130%;
         display: block;
     }
 
