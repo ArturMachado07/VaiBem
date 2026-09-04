@@ -26,7 +26,7 @@
 
     // Sem sessão Google guardada, não há área de cliente para mostrar.
     if (!user) {
-        window.location.href = "login.html";
+        window.location.href = "login.html?redirect=perfil.html";
         return;
     }
 

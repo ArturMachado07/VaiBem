@@ -109,7 +109,7 @@
             if (paidVia) return;
 
             if (!user) {
-                window.location.href = "login.html";
+                window.location.href = "login.html?redirect=confirmacao.html";
                 return;
             }
 
@@ -131,7 +131,7 @@
             if (paidVia) return;
 
             if (!user) {
-                window.location.href = "login.html";
+                window.location.href = "login.html?redirect=confirmacao.html";
                 return;
             }
 

@@ -11,6 +11,23 @@
     const GOOGLE_CLIENT_ID = "879022731866-t16a93kle7sets0491dj6d6rjn6uo57i.apps.googleusercontent.com";
     const USER_KEY = "vaibem:user";
 
+    /**
+     * Depois de entrar, volta para a página que pediu o login (ex.:
+     * confirmacao.html?redirect=confirmacao.html ao tentar pagar sem
+     * sessão), em vez de mandar sempre para index.html. Só aceita nomes de
+     * página internos e simples (sem protocolo, domínio ou "//"), para não
+     * abrir a porta a um redirecionamento para fora do site.
+     */
+    function getRedirectTarget() {
+        try {
+            const target = new URLSearchParams(window.location.search).get("redirect");
+            if (target && /^[a-zA-Z0-9_-]+\.html$/.test(target)) return target;
+        } catch (e) {
+            // Ignora e usa o destino por omissão.
+        }
+        return "index.html";
+    }
+
     function decodeJwt(token) {
         try {
             const base64Url = token.split(".")[1];
@@ -56,7 +73,7 @@
             // localStorage indisponível (ex.: modo privado) — segue em frente sem persistir.
         }
 
-        window.location.href = "index.html";
+        window.location.href = getRedirectTarget();
     }
 
     function init() {
