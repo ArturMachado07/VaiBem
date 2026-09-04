@@ -307,10 +307,6 @@
 
 @media(max-width: 768px){
 
-    .about-hero{
-        padding: 40px 0;
-    }
-
     .about-hero-content{
         flex-direction: column;
         text-align: center;
