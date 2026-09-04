@@ -101,9 +101,9 @@
 }
 
 .empresas-hero-image img{
+    width: min(78vw, 420px);
     max-width: 100%;
     height: auto;
-    max-height: 400px;
     object-fit: contain;
 }
 
@@ -565,7 +565,7 @@
     }
 
     .empresas-hero-image img{
-        max-height: 260px;
+        width: min(84vw, 320px);
     }
 
     .empresas-benefits{
