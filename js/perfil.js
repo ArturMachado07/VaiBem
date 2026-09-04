@@ -82,11 +82,13 @@
             const li = document.createElement("li");
             li.className = "profile-history-item";
 
-            const routeLabel = trip.route ? `${trip.route.origin} → ${trip.route.destination}` : "Viagem Vai Bem";
+            const routeLabel = trip.route
+                ? `${trip.route.origin} <img class="route-arrow" src="assets/icons/arrow-right-long.svg" alt="para"> ${trip.route.destination}`
+                : "Viagem Vai Bem";
             const priceLabel = typeof trip.price === "number" ? `${trip.price.toLocaleString("pt-PT")} Kz` : "";
 
             li.innerHTML = `
-                <span class="profile-history-route"><img src="assets/icons/autocarro.svg" alt="" class="profile-history-icon">${routeLabel}</span>
+                <span class="profile-history-route"><span class="profile-history-icon profile-card-icon-mask profile-card-icon-bus" aria-hidden="true"></span>${routeLabel}</span>
                 <span class="profile-history-date">${trip.date || ""}</span>
                 <span class="profile-history-price">${priceLabel}</span>
             `;
